@@ -1,0 +1,48 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import NavBar from "@components/layouts/NavBar.astro";
+import Banner from "@components/UI/Banner.astro";
+import StudioLink from "@src/components/UI/StudioLink.astro";
+
+const nav = [
+    {
+        href: "/studio/Impressions/impressionsCard",
+        title: "Погружение в Мануфактуру",
+        description:
+            "Индивидуальный визит в Москву. Встреча с ведущими мастерами. Демонстрация процесса финишной отделки",
+        img: "/img/studio/impression/impress-mini-1.png",
+    },
+    {
+        href: "/studio/Impressions/impressionsCard",
+        title: "Ужин <br/> с Мастером",
+        description:
+            "Приватный ужин в историческом центре Москвы с Константином Чайкиным или главным конструктором",
+        img: "/img/studio/impression/impress-mini-2.png",
+    },
+];
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <Banner
+            bg="/img/studio/impression/impress-banner.jpg"
+            blackLink="/studio"
+            title="Впечатления"
+            description="Коллекция уникальных моментов и участие в жизни мануфактуры"
+        />
+        <div class="-mx-4">
+            {
+                nav.map((item) => (
+                    <StudioLink
+                        href={item.href}
+                        title={item.title}
+                        description={item.description}
+                        img={item.img}
+                    />
+                ))
+            }
+        </div>
+    </ScreenBody>
+</ScreenLayout>
+<NavBar />

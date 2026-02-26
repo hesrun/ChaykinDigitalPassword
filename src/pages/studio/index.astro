@@ -1,0 +1,66 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import Title from "@components/UI/Title.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import RoundButton from "@components/UI/RoundButton.astro";
+import NavBar from "@components/layouts/NavBar.astro";
+import { Bell } from "@lucide/astro";
+
+const nav = [
+    {
+        name: "Впечатления",
+        text: "Коллекция уникальных моментов и участие в жизни мануфактуры",
+        img: "/img/studio/nav-img-1.png",
+        href: "/studio/Impressions",
+    },
+    {
+        name: "Забота и сервис",
+        text: "Искусство сохранения безупречной механики и эстетики",
+        img: "/img/studio/nav-img-2.png",
+        href: "/studio/service",
+    },
+    {
+        name: "Ателье ремешков",
+        text: "Новый образ для ваших часов. Мануфактурная коллекция и индивидуальный пошив",
+        img: "/img/studio/nav-img-3.png",
+        href: "/studio/straps",
+    },
+    {
+        name: "Комплектация",
+        text: "Восстановление целостности сета и аксессуары",
+        img: "/img/studio/nav-img-4.png",
+        href: "/studio/equipment",
+    },
+];
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <div class="flex justify-between items-center mb-4">
+            <Title as="h1">Ателье</Title>
+            <RoundButton variant="gray">
+                <Bell stroke-width="1" />
+                <span
+                    class="w-2 h-2 bg-primary rounded-full block absolute top-0.5 right-0.5"
+                ></span>
+            </RoundButton>
+        </div>
+        <div class="grid gap-2">
+            {
+                nav.map((item) => (
+                    <a
+                        href={item.href}
+                        class="bg-neutral-100 rounded-2xl flex relative overflow-hidden active:bg-primary/10 transition-colors"
+                    >
+                        <div class="p-5 h-40 flex flex-col justify-between">
+                            <Title as="h4">{item.name}</Title>
+                            <p class="text-medium text-xs">{item.text}</p>
+                        </div>
+                        <img src={item.img} alt={item.name} class="self-end" />
+                    </a>
+                ))
+            }
+        </div>
+    </ScreenBody>
+</ScreenLayout>
+<NavBar />

@@ -1,0 +1,28 @@
+---
+import ScreenBody from "../components/layouts/ScreenBody.astro";
+import ScreenLayout from "../layouts/ScreenLayout.astro";
+import NavBar from "../components/layouts/NavBar.astro";
+import Banner from "../components/UI/Banner.astro";
+
+const nav = [
+    {
+        href: "/studioImpressions",
+        title: "Погружение в Мануфактуру",
+        img: "",
+        description:
+            "Индивидуальный визит в Москву. Встреча с ведущими мастерами. Демонстрация процесса финишной отделки",
+    },
+];
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <Banner
+            bg="public/img/studio/impression/impress-banner.jpg"
+            isBack
+            title="Сервис <br/> и реставрация"
+            description="Официальное обслуживание мануфактуры для сохранения точности и стоимости вашего актива"
+        />
+    </ScreenBody>
+</ScreenLayout>
+<NavBar />

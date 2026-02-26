@@ -1,0 +1,58 @@
+---
+import clsx from "clsx";
+import RoundButton from "./RoundButton.astro";
+import { ArrowLeft } from "@lucide/astro";
+import Title from "./Title.astro";
+
+interface Props {
+    size?: "small" | "medium";
+    class?: string;
+    bg: string;
+    blackLink?: string;
+    title?: string;
+    description?: string;
+}
+
+const {
+    size = "small",
+    bg,
+    blackLink = "#",
+    title,
+    description,
+    class: className = "",
+} = Astro.props as Props;
+
+const sizeClasses = {
+    small: "aspect-[3/2]",
+    medium: "aspect-[1]",
+};
+---
+
+<div
+    class={clsx(
+        "-mx-4 -mt-4 text-white p-4 flex flex-col items-start bg-cover bg-center",
+        sizeClasses[size],
+        className,
+    )}
+    style={{
+        backgroundImage: title
+            ? `linear-gradient(30deg, rgba(0,0,0,.5) 0%, transparent 70%), url(${bg})`
+            : `url(${bg})`,
+    }}
+>
+    {
+        blackLink && (
+            <RoundButton variant="transparentDark" href={blackLink}>
+                <ArrowLeft stroke-width={1} />
+            </RoundButton>
+        )
+    }
+    {
+        title && description && (
+            <div class="mt-auto">
+                <Title as="h2" set:html={title} />
+                <p class="mt-2 text-xs">{description}</p>
+            </div>
+        )
+    }
+</div>

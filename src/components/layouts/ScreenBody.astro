@@ -1,0 +1,13 @@
+---
+import clsx from "clsx";
+export interface Props {
+    class?: string;
+    hasNavbr?: boolean;
+}
+const { class: className = "", hasNavbr = false } = Astro.props;
+const paddingClass = hasNavbr ? "pb-20" : "";
+---
+
+<div class={clsx("flex-1 overflow-y-auto p-4", paddingClass, className)}>
+    <slot />
+</div>

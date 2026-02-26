@@ -1,0 +1,55 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import NavBar from "@components/layouts/NavBar.astro";
+import Banner from "@components/UI/Banner.astro";
+import StudioLink from "@src/components/UI/StudioLink.astro";
+
+const nav = [
+    {
+        href: "/studio/equipment/equipmentCollection",
+        title: "Фирменная шкатулка",
+        description: "Дерево/Лак/Кожа",
+    },
+    {
+        href: "/studio/equipment/equipmentProduce",
+        title: "Пакет документов",
+        description: "Дубликаты инструкций, сервисная книжка",
+    },
+    {
+        href: "/studio/equipment/equipmentProduce",
+        title: "Гарантийная карта",
+        description: "Физический пластик с голограммой",
+    },
+
+    {
+        href: "/studio/equipment/equipmentProduce",
+        title: "Архивная выписка",
+        description: "Полный цифровой паспорт .pdf",
+    },
+];
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <Banner
+            bg="/img/studio/equipment/equipment-banner.jpg"
+            blackLink="/studio"
+            title="Комплектация и аксессуары"
+            description="Bespoke-ремешки, коробки и документы"
+        />
+        <div class="-mx-4">
+            {
+                nav.map((item) => (
+                    <StudioLink
+                        variant="minimal"
+                        href={item.href}
+                        title={item.title}
+                        description={item.description}
+                    />
+                ))
+            }
+        </div>
+    </ScreenBody>
+</ScreenLayout>
+<NavBar />

@@ -1,0 +1,42 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import Title from "@components/UI/Title.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import RoundButton from "@components/UI/RoundButton.astro";
+import { Bell, Plus } from "@lucide/astro";
+import NavBar from "@components/layouts/NavBar.astro";
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <div
+            class="bg-[url('/src/assets/Splash.jpg')] bg-cover bg-center -mx-4 -mt-4 p-4 text-white h-[50vh] flex flex-col"
+        >
+            <div class="flex items-center gap-4">
+                <div
+                    class="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shrink-0"
+                >
+                    <span class="text-2xl font-semibold font-roboto">KЧ</span>
+                </div>
+                <Title as="h2">Константин Чайкин</Title>
+                <RoundButton>
+                    <Bell stroke-width="1" />
+                    <span
+                        class="w-2 h-2 bg-primary rounded-full block absolute top-0.5 right-0.5"
+                    ></span>
+                </RoundButton>
+            </div>
+        </div>
+        <div class="flex flex-col items-center text-center gap-4 mt-24">
+            <RoundButton variant="primary">
+                <Plus stroke-width="1" />
+            </RoundButton>
+            <Title as="h5">В вашей коллекции <br /> пока нет часов</Title>
+            <span>
+                Добавьте первые часы, чтобы <br /> получить доступ к ивентам и
+                <br /> клубному сервису
+            </span>
+        </div>
+    </ScreenBody>
+</ScreenLayout>
+<NavBar />

@@ -1,0 +1,33 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import Button from "@components/UI/Button.astro";
+import Title from "@components/UI/Title.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+---
+
+<ScreenLayout>
+    <ScreenBody>
+        <form class="h-full flex flex-col justify-center gap-4">
+            <svg
+                width="79"
+                height="79"
+                viewBox="0 0 79 79"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <path
+                    d="M26.3333 9.875H25.675C20.1445 9.875 17.3792 9.875 15.2668 10.9513C13.4087 11.8981 11.8981 13.4087 10.9513 15.2668C9.875 17.3792 9.875 20.1445 9.875 25.675V26.3333M26.3333 69.125H25.675C20.1445 69.125 17.3792 69.125 15.2668 68.0487C13.4087 67.1019 11.8981 65.5913 10.9513 63.7332C9.875 61.6208 9.875 58.8555 9.875 53.325V52.6667M69.125 26.3333V25.675C69.125 20.1445 69.125 17.3792 68.0487 15.2668C67.1019 13.4087 65.5913 11.8981 63.7332 10.9513C61.6208 9.875 58.8555 9.875 53.325 9.875H52.6667M69.125 52.6667V53.325C69.125 58.8555 69.125 61.6208 68.0487 63.7332C67.1019 65.5913 65.5913 67.1019 63.7332 68.0487C61.6208 69.125 58.8555 69.125 53.325 69.125H52.6667M24.6875 26.3333V31.2708M54.3125 26.3333V31.2708M36.2083 41.4753C38.8417 41.4753 41.1458 39.1712 41.1458 36.5378V26.3333M50.034 50.0332C44.109 55.9582 34.5631 55.9582 28.6381 50.0332"
+                    stroke="black"
+                    stroke-width="3.29167"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            <Title as="h1">Использовать <br /> Face ID?</Title>
+            <p class="text-medium">
+                Для быстрого доступа к Chaykin Digital Passport
+            </p>
+            <Button variant="primary">Да</Button>
+            <Button variant="secondary">Пропустить</Button>
+        </form>
+    </ScreenBody>
+</ScreenLayout>

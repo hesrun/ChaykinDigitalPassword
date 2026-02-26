@@ -1,0 +1,54 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import Button from "@components/UI/Button.astro";
+import Input from "@components/UI/Input.astro";
+import Title from "@components/UI/Title.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+---
+
+<ScreenLayout>
+    <ScreenBody>
+        <svg
+            class="absolute left-4 top-8"
+            width="65"
+            height="36"
+            viewBox="0 0 98 54"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M33.6875 51L30.625 54H67.375L64.3125 51L61.25 48H49L0 0L49 36L98 0L49 48H36.75L33.6875 51Z"
+                fill="black"></path>
+        </svg>
+        <form class="h-full flex flex-col justify-center gap-4">
+            <Title as="h1">Регистрация</Title>
+            <p class="text-medium">Укажите ваши данные для создания аккаунта</p>
+            <div class="grid gap-2">
+                <Input
+                    type="text"
+                    variant="floating"
+                    label="Страна"
+                    id="country"
+                    name="country"
+                />
+                <Input
+                    type="text"
+                    variant="floating"
+                    label="Город"
+                    id="city"
+                    name="city"
+                />
+                <Input
+                    type="tel"
+                    variant="floating"
+                    label="Телефон"
+                    id="tel"
+                    name="tel"
+                />
+            </div>
+            <Button variant="primary">Зарегистрироваться</Button>
+        </form>
+    </ScreenBody>
+</ScreenLayout>

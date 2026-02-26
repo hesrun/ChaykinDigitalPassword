@@ -1,0 +1,82 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import Title from "@components/UI/Title.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import RoundButton from "@components/UI/RoundButton.astro";
+import { Bell, ChevronRight, Plus } from "@lucide/astro";
+import NavBar from "@components/layouts/NavBar.astro";
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <div
+            class="bg-[url('/src/assets/Splash.jpg')] bg-cover bg-center -mx-4 -mt-4 p-4 text-white h-[50vh] flex flex-col"
+        >
+            <div class="flex items-center gap-4">
+                <div
+                    class="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shrink-0"
+                >
+                    <span class="text-2xl font-semibold font-roboto">KЧ</span>
+                </div>
+                <Title as="h2">Константин Чайкин</Title>
+                <RoundButton>
+                    <Bell stroke-width="1" />
+                    <span
+                        class="w-2 h-2 bg-primary rounded-full block absolute top-0.5 right-0.5"
+                    ></span>
+                </RoundButton>
+            </div>
+            <div class="mt-auto flex justify-between items-center">
+                <div class="grid gap-2">
+                    <svg
+                        width="49"
+                        height="27"
+                        viewBox="0 0 98 54"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M33.6875 51L30.625 54H67.375L64.3125 51L61.25 48H49L0 0L49 36L98 0L49 48H36.75L33.6875 51Z"
+                            fill="white"></path>
+                    </svg>
+                    Владелец часов с 2024г
+                </div>
+                <RoundButton>
+                    <Plus stroke-width="1" />
+                </RoundButton>
+            </div>
+        </div>
+        <div class="-mx-4">
+            {
+                Array(5)
+                    .fill(0)
+                    .map(() => (
+                        <a
+                            href=""
+                            class="flex not-last:border-b border-line p-4 gap-4 items-center active:bg-primary/5 transition-colors"
+                        >
+                            <img
+                                class="w-[120px]"
+                                src="/public/img/main/watch.png"
+                                alt=""
+                            />
+                            <div class="flex-1 flex flex-col gap-1.5">
+                                <Title as="h4">Joker</Title>
+                                <span>KC-042</span>
+                                <div class="border border-line w-max mt-2 px-2 py-1 text-sm rounded-full text-xs">
+                                    В коллекции
+                                </div>
+                            </div>
+                            <ChevronRight
+                                stroke-width="1"
+                                class="text-primary"
+                            />
+                        </a>
+                    ))
+            }
+        </div>
+    </ScreenBody>
+</ScreenLayout>
+<NavBar />

@@ -1,0 +1,29 @@
+---
+import Button from "../components/UI/Button.astro";
+import Input from "../components/UI/Input.astro";
+import Title from "../components/UI/Title.astro";
+import AppLayout from "../layouts/AppLayout.astro";
+---
+
+<AppLayout>
+	<div class="flex flex-col gap-4 p-4 bg-gray-300">
+	<Title as="h1">title h1</Title>
+	<Title as="h2">title h2</Title>
+	<Title as="h3">title h3</Title>	
+	<Title as="h4">title h4</Title>
+	<Title as="h5">title h5</Title>
+	<Input type="text" variant="floating" name="example" label="floating" />
+	<Input type="text" variant="standard" name="example" placeholder="standard" />
+	<Input type="text" variant="floating" name="example" label="floating disabled" disabled />
+	<Input type="text" variant="standard" name="example" placeholder="standard disabled" disabled />
+	<Button variant="primary" isLoading>primary</Button>
+	<Button variant="primary" disabled>primary disabled</Button>
+	<Button variant="primary" isLoading>primary loading</Button>
+	<Button variant="secondary" isLoading>secondary</Button>
+	<Button variant="secondary" disabled>secondary disabled</Button>
+	<Button variant="secondary" isLoading>secondary loading</Button>
+	<Button variant="white">white</Button>
+	<Button variant="white" disabled>white disabled</Button>
+	<Button variant="white" isLoading>white loading</Button>
+	</div>
+</AppLayout>

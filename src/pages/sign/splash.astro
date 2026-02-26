@@ -1,0 +1,31 @@
+---
+import Title from "@components/UI/Title.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+---
+
+<ScreenLayout>
+    <div
+        class="fixed inset-0 flex flex-col items-center justify-center bg-[url('/src/assets/Splash.jpg')] bg-cover bg-center text-white"
+    >
+        <svg
+            class="mb-5"
+            width="98"
+            height="54"
+            viewBox="0 0 98 54"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M33.6875 51L30.625 54H67.375L64.3125 51L61.25 48H49L0 0L49 36L98 0L49 48H36.75L33.6875 51Z"
+                fill="white"></path>
+        </svg>
+        <Title as="h3" class="text-center"
+            >Chaykin Digital <br /> Password</Title
+        >
+        <span class="absolute bottom-14 font-roboto roboto-flex-custom"
+            >Identity. Ownership. Access</span
+        >
+    </div>
+</ScreenLayout>

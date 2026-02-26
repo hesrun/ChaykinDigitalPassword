@@ -1,0 +1,63 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import NavBar from "@components/layouts/NavBar.astro";
+import Banner from "@components/UI/Banner.astro";
+import StudioLink from "@src/components/UI/StudioLink.astro";
+
+const nav = [
+    {
+        href: "/studio/service/serviceCard",
+        title: "Комплексное обслуживание ",
+        description:
+            "Полная разборка механизма, ультразвуковая чистка, замена смазки и изношенных деталей, настройка точности хода и восстановление герметичности",
+    },
+    {
+        href: "/studio/service/serviceCard",
+        title: "Эстетическая реставрация ",
+        description:
+            "Устранение царапин и потертостей на корпусе и застежке. Восстановление заводской геометрии, сатинирования и полировки",
+    },
+    {
+        href: "/studio/service/serviceCard",
+        title: "Эстетическая реставрация ",
+        description:
+            "Устранение царапин и потертостей на корпусе и застежке. Восстановление заводской геометрии, сатинирования и полировки",
+    },
+    {
+        href: "/studio/service/serviceCard",
+        title: "Диагностика и регулировка",
+        description:
+            "Проверка точности хода, намагниченности и герметичности. Настройка градусника баланса. Рекомендуется при ударах или падении точности",
+    },
+    {
+        href: "/studio/service/serviceCard",
+        title: "Сервисный пакет <span class='text-primary'>Гарантия+</span>",
+        description:
+            "Официальное продление гарантии мануфактуры на 1 или 2 года после диагностики",
+    },
+];
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <Banner
+            bg="/img/studio/service/service-banner.jpg"
+            blackLink="/studio"
+            title="Сервис и реставрация"
+            description="Официальное обслуживание мануфактуры для сохранения точности и стоимости вашего актива"
+        />
+        <div class="-mx-4">
+            {
+                nav.map((item) => (
+                    <StudioLink
+                        href={item.href}
+                        title={item.title}
+                        description={item.description}
+                    />
+                ))
+            }
+        </div>
+    </ScreenBody>
+</ScreenLayout>
+<NavBar />

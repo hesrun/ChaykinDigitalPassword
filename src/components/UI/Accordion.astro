@@ -1,0 +1,56 @@
+---
+import { ChevronDown } from "@lucide/astro";
+import Title from "./Title.astro";
+
+interface Props {
+    title: string;
+    content: string;
+}
+
+const { title, content } = Astro.props;
+---
+
+<div class="bg-card rounded-lg p-4" data-accordion>
+    <div class="flex items-center justify-between cursor-pointer" data-trigger>
+        <Title as="h6">{title}</Title>
+        <ChevronDown
+            stroke-width={1}
+            class="text-primary transition-transform duration-300"
+        />
+    </div>
+
+    <div
+        class="grid grid-rows-[0fr] overflow-hidden transition-all duration-300"
+        data-content
+    >
+        <div class="min-h-0">
+            <p class="pt-2 text-medium">{content}</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll("[data-accordion]").forEach((accordion) => {
+        const trigger = accordion.querySelector("[data-trigger]");
+        const content = accordion.querySelector("[data-content]");
+        const icon = accordion.querySelector("svg");
+
+        trigger?.addEventListener("click", () => {
+            const isOpen = content?.classList.contains("grid-rows-[1fr]");
+
+            if (isOpen) {
+                content?.classList.replace(
+                    "grid-rows-[1fr]",
+                    "grid-rows-[0fr]",
+                );
+                icon?.classList.remove("rotate-180");
+            } else {
+                content?.classList.replace(
+                    "grid-rows-[0fr]",
+                    "grid-rows-[1fr]",
+                );
+                icon?.classList.add("rotate-180");
+            }
+        });
+    });
+</script>

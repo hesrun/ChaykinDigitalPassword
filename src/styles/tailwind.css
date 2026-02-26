@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Roboto+Flex:opsz,slnt,wdth,wght,GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC@8..144,-10..0,25..151,100..1000,-200..150,27..175,323..603,25..135,649..854,-305..-98,560..788,416..570,528..760&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+    --font-golos: "Golos Text", ui-sans-serif, system-ui, sans-serif;
+    --font-roboto: "Roboto Flex", ui-sans-serif, system-ui, sans-serif;
+    --color-primary: #85022c;
+    --color-primary-light: #a5033e;
+    --color-primary-dark: #5c0119;
+    --color-medium: #737373;
+    --color-line: #d4d4d4;
+    --color-card: #f5f5f5;
+    --animate-spin: spin 0.5s linear infinite;
+}
+
+@utility roboto-flex-custom {
+    font-variation-settings:
+        "GRAD" 0,
+        "XOPQ" 96,
+        "XTRA" 468,
+        "YOPQ" 79,
+        "YTAS" 750,
+        "YTDE" -180,
+        "YTFI" 738,
+        "YTLC" 514,
+        "YTUC" 670,
+        "slnt" 0,
+        "wdth" 151;
+}
+
+@layer components {
+    /* button classes */
+    .btn {
+        @apply font-roboto roboto-flex-custom font-semibold rounded-lg transition-colors duration-200 w-full py-5 px-2 disabled:cursor-not-allowed disabled:opacity-50 flex items-center justify-center;
+    }
+    .btn-primary {
+        @apply bg-primary text-white active:bg-primary-light disabled:bg-primary-dark disabled:text-gray-500;
+    }
+    .btn-secondary {
+        @apply bg-gray-100 text-gray-700 active:bg-gray-300 disabled:bg-gray-100 disabled:text-gray-400;
+    }
+    .btn-white {
+        @apply bg-white text-gray-700 active:bg-gray-100 disabled:bg-gray-100 disabled:text-gray-400;
+    }
+    .btn-loading {
+        @apply pointer-events-none;
+    }
+
+    /* input classes */
+    .c-input__input {
+        @apply w-full h-14 rounded-lg bg-[#F5F5F5] text-sm text-gray-900 px-3 py-2 outline-none transition disabled:cursor-not-allowed disabled:opacity-60;
+    }
+    .c-input__label {
+        @apply text-sm font-medium text-gray-700 mb-1 block;
+    }
+    .c-input_floating {
+        @apply relative w-full;
+    }
+    .c-input_floating .c-input__input {
+        @apply pt-5;
+    }
+    .c-input__label_floating {
+        @apply pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-4 peer-focus:text-xs peer-focus:text-primary peer-not-placeholder-shown:top-4 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-primary;
+    }
+}
+
+/* 
+    neutral-100: #F5F5F5
+    lines : border-gray-100
+ */

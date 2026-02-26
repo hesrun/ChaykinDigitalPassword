@@ -1,0 +1,89 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import NavBar from "@components/layouts/NavBar.astro";
+import Banner from "@components/UI/Banner.astro";
+import Title from "@src/components/UI/Title.astro";
+import Accordion from "@src/components/UI/Accordion.astro";
+
+const accordions = [
+    {
+        title: "Приватность",
+        content:
+            "Экскурсия проводится индивидуально для вас и ваших гостей (до 3 персон)",
+    },
+    {
+        title: "Доступ в «Святая святых»",
+        content:
+            "Вы получите уникальную возможность посетить закрытые зоны мануфактуры, обычно недоступные для посторонних.",
+    },
+    {
+        title: "Урок высокого мастерства",
+        content:
+            "Вы получите уникальную возможность наблюдать за работой мастеров и узнать секреты их мастерства.",
+    },
+    {
+        title: "Диалог с мануфактурой",
+        content:
+            "Вы получите возможность лично пообщаться с мастерами и узнать больше о процессе создания часов.",
+    },
+];
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <Banner
+            bg="/img/studio/impression/impress-card-banner.jpg"
+            blackLink="/studio/Impressions"
+        />
+        <div class="mt-4 grid gap-4">
+            <div>
+                <Title as="h2" class="mb-4">Погружение в Мануфактуру </Title>
+                <p>
+                    Прикоснитесь к тайне рождения времени. Закрытая экскурсия в
+                    сердце российского высокого часового искусства
+                </p>
+            </div>
+            <div>
+                <Title as="h4" class="mb-4">Подробности</Title>
+                <p>
+                    Мануфактура Константина Чайкина — это не просто
+                    производство, это лаборатория изобретений, обычно закрытая
+                    для посторонних глаз. Мы приглашаем вас пройти путь рождения
+                    часов: от эскиза изобретателя до финальной сборки калибра в
+                    стерильной зоне. Вы увидите, как металл обретает душу,
+                    услышите первое биение сердца механизма и лично пообщаетесь
+                    с мастерами, создающими ваши часы
+                </p>
+            </div>
+            <div>
+                <Title as="h4" class="mb-4">Что включено в визит</Title>
+                <div class="grid gap-2">
+                    {
+                        accordions.map((accordion) => (
+                            <Accordion
+                                title={accordion.title}
+                                content={accordion.content}
+                            />
+                        ))
+                    }
+                </div>
+            </div>
+            <div class="grid gap-3">
+                <div class="grid">
+                    <span class="text-medium text-xs">Длительность</span>
+                    2–3 часа
+                </div>
+                <div class="grid">
+                    <span class="text-medium text-xs">Условия</span>
+                    Требуется предварительное бронирование минимум за 14 дней
+                </div>
+                <div class="grid">
+                    <span class="text-medium text-xs">Локация</span>
+                    Москва, Реутовская мануфактура
+                </div>
+            </div>
+        </div>
+    </ScreenBody>
+    <NavBar />
+</ScreenLayout>

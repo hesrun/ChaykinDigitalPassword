@@ -1,0 +1,89 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import NavBar from "@components/layouts/NavBar.astro";
+import Banner from "@components/UI/Banner.astro";
+import Title from "@src/components/UI/Title.astro";
+import Accordion from "@src/components/UI/Accordion.astro";
+
+const accordions = [
+    {
+        title: "Ультразвуковая чистка",
+        content:
+            "Глубокое очищение внешних элементов корпуса и звеньев браслета от микрочастиц пыли и загрязнений в профессиональной ванне.",
+    },
+    {
+        title: "Лазерная наплавка",
+        content:
+            "Восстановление поврежденных участков корпуса с помощью высокоточного лазера, который плавит металл, заполняя царапины и вмятины.",
+    },
+    {
+        title: "Восстановление финиша",
+        content:
+            "Восстановление внешнего вида корпуса и браслета до первоначального состояния, включая полировку и удаление мелких дефектов.",
+    },
+    {
+        title: "Замена уплотнителей",
+        content:
+            "Замена уплотнителей для обеспечения водонепроницаемости и защиты механизма от пыли и влаги.",
+    },
+];
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <Banner
+            bg="/img/studio/service/service-banner-2.jpg"
+            blackLink="/studio/service"
+        />
+        <div class="mt-4 grid gap-4">
+            <div>
+                <Title as="h2" class="mb-4"
+                    >Эстетическая реставрация (SPA)</Title
+                >
+                <p class="text-medium">
+                    Возвращение первозданного блеска и заводской геометрии
+                    корпуса
+                </p>
+            </div>
+            <div>
+                <Title as="h4" class="mb-4">Подробности</Title>
+                <p>
+                    Даже при самом бережном ношении время оставляет следы на
+                    металле. Услуга SPA — это «омолаживающий курс» для ваших
+                    часов, который устраняет царапины, потертости и следы
+                    ударов, возвращая корпусу вид «только что из бутика». Мы не
+                    просто полируем поверхность, мы восстанавливаем архитектуру
+                    корпуса, сохраняя четкость граней и чередование типов
+                    обработки (сатинирование, зеркальная полировка,
+                    пескоструйная обработка), задуманных Константином Чайкиным.
+                </p>
+            </div>
+            <div>
+                <Title as="h4" class="mb-4">Что включено</Title>
+                <div class="grid gap-2">
+                    {
+                        accordions.map((accordion) => (
+                            <Accordion
+                                title={accordion.title}
+                                content={accordion.content}
+                            />
+                        ))
+                    }
+                </div>
+            </div>
+            <div class="grid gap-3">
+                <div class="grid">
+                    <span class="text-medium text-xs">Срок</span>
+                    10–14 дней
+                </div>
+                <div class="grid">
+                    <span class="text-medium text-xs">Механизм</span>
+                    Работы проводятся без вмешательства в часовой механизм (если не
+                    заказан репассаж).
+                </div>
+            </div>
+        </div>
+    </ScreenBody>
+    <NavBar />
+</ScreenLayout>

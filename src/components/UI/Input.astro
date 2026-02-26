@@ -1,0 +1,71 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+    id?: string;
+    name: string;
+    label?: string;
+    type: "text" | "email" | "password" | "number" | "tel" | "url";
+    variant?: "floating" | "standard";
+    class?: string;
+    disabled?: boolean;
+    required?: boolean;
+    placeholder?: string;
+    isTextcenter?: boolean;
+}
+
+const {
+    id,
+    name,
+    label,
+    type = "text",
+    variant = "floating",
+    class: className = "",
+    disabled = false,
+    required = false,
+    placeholder = "",
+    isTextcenter = false,
+} = Astro.props;
+
+const inputId = id ?? name;
+const isFloating = variant === "floating";
+---
+
+{
+    isFloating ? (
+        <div class={clsx("c-input c-input_floating", className)}>
+            <input
+                id={inputId}
+                name={name}
+                type={type}
+                placeholder={placeholder}
+                disabled={disabled}
+                required={required}
+                class={clsx(
+                    "c-input__input c-input__input_floating peer",
+                    isTextcenter && "text-center",
+                )}
+            />
+            {label && (
+                <label
+                    for={inputId}
+                    class="c-input__label c-input__label_floating"
+                >
+                    {label}
+                </label>
+            )}
+        </div>
+    ) : (
+        <div class={clsx("c-input", className)}>
+            <input
+                id={inputId}
+                name={name}
+                type={type}
+                disabled={disabled}
+                required={required}
+                class={clsx("c-input__input", isTextcenter && "text-center")}
+                placeholder={placeholder}
+            />
+        </div>
+    )
+}

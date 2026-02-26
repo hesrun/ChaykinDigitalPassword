@@ -1,0 +1,21 @@
+---
+import "../styles/main.scss";
+import "../styles/tailwind.css";
+import { ClientRouter } from "astro:transitions";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro Basics</title>
+        <ClientRouter />
+    </head>
+    <body class="font-golos leading-tight text-sm">
+        <slot />
+    </body><script type="module" src="/src/scripts/global.js"></script>
+</html>
