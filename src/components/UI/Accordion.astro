@@ -30,27 +30,32 @@ const { title, content } = Astro.props;
 </div>
 
 <script>
-    document.querySelectorAll("[data-accordion]").forEach((accordion) => {
-        const trigger = accordion.querySelector("[data-trigger]");
-        const content = accordion.querySelector("[data-content]");
-        const icon = accordion.querySelector("svg");
+    function initAccordions() {
+        document.querySelectorAll("[data-accordion]").forEach((accordion) => {
+            const trigger = accordion.querySelector("[data-trigger]");
+            const content = accordion.querySelector("[data-content]");
+            const icon = accordion.querySelector("svg");
 
-        trigger?.addEventListener("click", () => {
-            const isOpen = content?.classList.contains("grid-rows-[1fr]");
+            trigger?.addEventListener("click", () => {
+                const isOpen = content?.classList.contains("grid-rows-[1fr]");
 
-            if (isOpen) {
-                content?.classList.replace(
-                    "grid-rows-[1fr]",
-                    "grid-rows-[0fr]",
-                );
-                icon?.classList.remove("rotate-180");
-            } else {
-                content?.classList.replace(
-                    "grid-rows-[0fr]",
-                    "grid-rows-[1fr]",
-                );
-                icon?.classList.add("rotate-180");
-            }
+                if (isOpen) {
+                    content?.classList.replace(
+                        "grid-rows-[1fr]",
+                        "grid-rows-[0fr]",
+                    );
+                    icon?.classList.remove("rotate-180");
+                } else {
+                    content?.classList.replace(
+                        "grid-rows-[0fr]",
+                        "grid-rows-[1fr]",
+                    );
+                    icon?.classList.add("rotate-180");
+                }
+            });
         });
-    });
+    }
+
+    initAccordions();
+    document.addEventListener("astro:page-load", initAccordions);
 </script>
