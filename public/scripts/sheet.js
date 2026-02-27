@@ -142,8 +142,11 @@
         );
         sheetEl.addEventListener(
             "touchmove",
-            (e) => onMove(e.touches[0].clientY),
-            { passive: true },
+            (e) => {
+                if (isDragging) e.preventDefault();
+                onMove(e.touches[0].clientY);
+            },
+            { passive: false },
         );
         sheetEl.addEventListener("touchend", (e) =>
             onEnd(e.changedTouches[0].clientY),
