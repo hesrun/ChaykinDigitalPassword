@@ -1,0 +1,68 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import NavBar from "@components/layouts/NavBar.astro";
+import Banner from "@components/UI/Banner.astro";
+import Title from "@src/components/UI/Title.astro";
+import Accordion from "@src/components/UI/Accordion.astro";
+
+const accordions = [
+    {
+        title: "Селекция материалов",
+        content:
+            "Доступ к закрытой коллекции кож мануфактуры. Вы можете выбрать фактуру миссисипского аллигатора, акулы, ската, страуса или премиального теленка выделки Barenia",
+    },
+    {
+        title: "Архитектура и форма",
+        content:
+            "Мы учитываем геометрию корпуса, анатомию запястья и эстетические предпочтения, чтобы создать ремешок, который идеально сочетается с вашими часами и стилем жизни.",
+    },
+    {
+        title: "Колористические решения",
+        content:
+            "Мы предлагаем широкий спектр цветовых решений, чтобы ваш ремешок идеально сочетался с вашими часами и стилем жизни.",
+    },
+    {
+        title: "Персонализация",
+        content:
+            "Мы предлагаем возможность персонализации ремешка, включая гравировку и выбор уникальных элементов дизайна, чтобы создать аксессуар, который полностью отражает ваш стиль и индивидуальность.",
+    },
+];
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <Banner
+            bg="/img/studio/straps/straps-craft-banner.jpg"
+            blackLink="/studio/straps"
+        />
+        <div class="mt-4 grid gap-4">
+            <div>
+                <Title as="h2" class="mb-4">Индивидуальный пошив</Title>
+                <p>
+                    Ремешок — это продолжение характера ваших часов. Услуга
+                    Bespoke позволяет создать уникальный аксессуар, который
+                    существует в единственном экземпляре и идеально
+                    соответствует вашему стилю жизни. Мы учитываем анатомию
+                    вашего запястья, геометрию корпуса и эстетические
+                    предпочтения, превращая замену ремешка в создание нового
+                    образа для ваших часов
+                </p>
+            </div>
+            <div>
+                <Title as="h4" class="mb-4">Что включено</Title>
+                <div class="grid gap-2">
+                    {
+                        accordions.map((accordion) => (
+                            <Accordion
+                                title={accordion.title}
+                                content={accordion.content}
+                            />
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </ScreenBody>
+    <NavBar />
+</ScreenLayout>

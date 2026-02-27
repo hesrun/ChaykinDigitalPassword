@@ -1,0 +1,87 @@
+---
+import { ArrowLeft, Watch } from "@lucide/astro";
+import NavBar from "@src/components/layouts/NavBar.astro";
+import ScreenBody from "@src/components/layouts/ScreenBody.astro";
+import StrapSheet from "@src/components/sheets/StrapSheet.astro";
+import RoundButton from "@src/components/UI/RoundButton.astro";
+import Title from "@src/components/UI/Title.astro";
+import WatchDrop from "@src/components/UI/WatchDrop.astro";
+import ScreenLayout from "@src/layouts/ScreenLayout.astro";
+
+const products = [
+    {
+        name: "Часовой ремешок Joker",
+        price: "54 400 ₽",
+        img: "/img/studio/straps/card.jpg",
+    },
+    {
+        name: "Часовой ремешок миньоны титан",
+        price: "18 400 ₽",
+        img: "/img/studio/straps/card.jpg",
+    },
+    {
+        name: "Часовой ремешок",
+        price: "37 400 ₽",
+        img: "/img/studio/straps/card.jpg",
+    },
+    {
+        name: "Часовой ремешок",
+        price: "37 400 ₽",
+        img: "/img/studio/straps/card.jpg",
+    },
+    {
+        name: "Часовой ремешок Joker",
+        price: "54 400 ₽",
+        img: "/img/studio/straps/card.jpg",
+    },
+    {
+        name: "Часовой ремешок миньоны титан",
+        price: "18 400 ₽",
+        img: "/img/studio/straps/card.jpg",
+    },
+    {
+        name: "Часовой ремешок",
+        price: "37 400 ₽",
+        img: "/img/studio/straps/card.jpg",
+    },
+    {
+        name: "Часовой ремешок",
+        price: "37 400 ₽",
+        img: "/img/studio/straps/card.jpg",
+    },
+];
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <RoundButton variant="transparentDark" href="/studio/straps">
+            <ArrowLeft stroke-width={1} class="text-primary" />
+        </RoundButton>
+        <Title as="h1" class="my-4">Коллекция мануфактуры</Title>
+        <div class="mb-4">
+            <WatchDrop />
+        </div>
+        <div class="grid grid-cols-2 gap-x-2 gap-y-5">
+            {
+                products.map((item) => (
+                    <button
+                        class="flex flex-col gap-y-2 text-left"
+                        data-sheet-open="watch"
+                    >
+                        <img
+                            src={item.img}
+                            alt={item.name}
+                            class="w-full aspect-1 rounded-2xl object-cover"
+                        />
+                        <p class="text-medium">{item.name}</p>
+                        <Title as="h6" class="mt-auto">
+                            {item.price}
+                        </Title>
+                    </button>
+                ))
+            }
+        </div>
+    </ScreenBody>
+</ScreenLayout>
+<StrapSheet />
+<NavBar />

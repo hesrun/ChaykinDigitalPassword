@@ -14,8 +14,11 @@ import { ClientRouter } from "astro:transitions";
         <meta name="generator" content={Astro.generator} />
         <title>Astro Basics</title>
         <ClientRouter />
+
+        <script type="module" src="/src/scripts/global.js"></script>
+        <script type="module" src="/src/scripts/sheet.js"></script>
     </head>
-    <body class="font-golos leading-tight text-sm">
+    <body class="font-golos leading-tight text-sm" x-data>
         <slot />
-    </body><script type="module" src="/src/scripts/global.js"></script>
+    </body>
 </html>

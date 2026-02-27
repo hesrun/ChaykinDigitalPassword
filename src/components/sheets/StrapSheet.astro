@@ -1,0 +1,43 @@
+---
+import BottomSheet from "../layouts/BottomSheet/BottomSheet.astro";
+import SheetContainer from "../layouts/BottomSheet/SheetContainer.astro";
+import Button from "../UI/Button.astro";
+import Sizes from "../UI/Sizes.astro";
+import Title from "../UI/Title.astro";
+---
+
+<BottomSheet id="watch">
+    <SheetContainer>
+        <div class="grid gap-4">
+            <div class="flex overflow-x-auto gap-2 -mx-4 px-4">
+                <img
+                    class="w-[90vw]"
+                    src="/img/studio/straps/card-big.jpg"
+                    alt=""
+                />
+                <img
+                    class="w-[90vw]"
+                    src="/img/studio/straps/card-big.jpg"
+                    alt=""
+                />
+                <img
+                    class="w-[90vw]"
+                    src="/img/studio/straps/card-big.jpg"
+                    alt=""
+                />
+            </div>
+            <div>
+                <Title as="h1" class="mb-4">Часовой ремешок Joker</Title>
+                <p>
+                    Не будет ли изобретение ремешка для часов тем же самым, что
+                    изобретение велосипеда? Константин Чайкин считает, что
+                    коллекционный часовой ремешок может быть убедительным
+                    свидетельством творческого подхода к дизайну
+                </p>
+            </div>
+            <Title as="h3">54 400 ₽</Title>
+            <Sizes />
+            <Button variant="primary">Купить</Button>
+        </div>
+    </SheetContainer>
+</BottomSheet>

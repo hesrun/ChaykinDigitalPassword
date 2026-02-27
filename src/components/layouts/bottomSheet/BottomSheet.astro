@@ -1,0 +1,17 @@
+---
+// ActionSheet.astro
+//
+// <ActionSheet id="mySheet">
+//   ...контент...
+// </ActionSheet>
+
+interface Props {
+    id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<template data-sheet-id={id}>
+    <slot />
+</template>

@@ -1,0 +1,99 @@
+---
+import { ChevronDown, CircleCheck } from "@lucide/astro";
+import Title from "./Title.astro";
+
+const watches = [
+    { name: "Joker", img: "/img/studio/straps/watch.png" },
+    { name: "Carpe Diem", img: "/img/studio/straps/watch.png" },
+    { name: "Carpe Diem 2", img: "/img/studio/straps/watch.png" },
+];
+---
+
+<div class="relative group" id="watchDropdown" data-open="false">
+    <button
+        type="button"
+        id="dropdownTrigger"
+        class="w-full flex gap-4 items-center bg-card p-4 rounded-3xl text-left"
+    >
+        <img
+            id="triggerImg"
+            src={watches[0].img}
+            alt={watches[0].name}
+            class="w-15 pointer-events-none"
+        />
+        <div class="flex-1 grid gap-1 pointer-events-none">
+            <Title as="h6">{watches[0].name}</Title>
+            <span class="text-medium">Показаны ремешки для модели</span>
+        </div>
+        <ChevronDown
+            stroke-width={1}
+            class="text-primary transition-transform duration-200 pointer-events-none group-data-[open=true]:rotate-180"
+        />
+    </button>
+
+    <div
+        class="absolute top-full left-0 w-full mt-2 bg-card rounded-3xl shadow-2xl overflow-hidden z-10 transition-all duration-200 opacity-0 -translate-y-1 pointer-events-none group-data-[open=true]:opacity-100 group-data-[open=true]:translate-y-0 group-data-[open=true]:pointer-events-auto"
+    >
+        {
+            watches.map((item, index) => (
+                <button
+                    type="button"
+                    class="dropdown-item w-full flex items-center gap-2 p-4 border-b border-line active:bg-primary/10 text-left"
+                    data-name={item.name}
+                    data-img={item.img}
+                >
+                    <img
+                        src={item.img}
+                        alt={item.name}
+                        class="w-10 pointer-events-none"
+                    />
+                    <Title as="h6" class="flex-1 pointer-events-none">
+                        {item.name}
+                    </Title>
+                    <CircleCheck
+                        stroke-width={1}
+                        class={`item-check text-primary transition-opacity duration-150 pointer-events-none ${index === 0 ? "opacity-100" : "opacity-0"}`}
+                    />
+                </button>
+            ))
+        }
+    </div>
+</div>
+
+<script>
+    const dropdown = document.getElementById("watchDropdown")!;
+    const trigger = document.getElementById("dropdownTrigger")!;
+    const triggerImg = trigger.querySelector("img")!;
+    const triggerTitle = trigger.querySelector("h6")!;
+
+    trigger.addEventListener("click", () => {
+        const isOpen = dropdown.dataset.open === "true";
+        dropdown.dataset.open = isOpen ? "false" : "true";
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!dropdown.contains(e.target as Node))
+            dropdown.dataset.open = "false";
+    });
+
+    document
+        .querySelectorAll<HTMLButtonElement>(".dropdown-item")
+        .forEach((item) => {
+            item.addEventListener("click", () => {
+                document.querySelectorAll(".item-check").forEach((el) => {
+                    el.classList.add("opacity-0");
+                    el.classList.remove("opacity-100");
+                });
+                item.querySelector(".item-check")!.classList.remove(
+                    "opacity-0",
+                );
+                item.querySelector(".item-check")!.classList.add("opacity-100");
+
+                triggerImg.src = item.dataset.img!;
+                triggerImg.alt = item.dataset.name!;
+                triggerTitle.textContent = item.dataset.name!;
+
+                dropdown.dataset.open = "false";
+            });
+        });
+</script>

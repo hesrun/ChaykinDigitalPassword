@@ -52,11 +52,15 @@ const nav = [
                         href={item.href}
                         class="bg-neutral-100 rounded-2xl flex relative overflow-hidden active:bg-primary/10 transition-colors"
                     >
-                        <div class="p-5 h-40 flex flex-col justify-between">
+                        <div class="p-5 h-40 flex flex-col justify-between max-w-[60%]">
                             <Title as="h4">{item.name}</Title>
                             <p class="text-medium text-xs">{item.text}</p>
                         </div>
-                        <img src={item.img} alt={item.name} class="self-end" />
+                        <img
+                            src={item.img}
+                            alt={item.name}
+                            class="absolute right-0 bottom-0"
+                        />
                     </a>
                 ))
             }
