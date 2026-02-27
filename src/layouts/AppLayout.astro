@@ -14,9 +14,15 @@ import { ClientRouter } from "astro:transitions";
         <meta name="generator" content={Astro.generator} />
         <title>Astro Basics</title>
         <ClientRouter />
-
-        <script type="module" src="/src/scripts/global.js"></script>
-        <script type="module" src="/src/scripts/sheet.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/intl-tel-input@26.7.5/build/css/intlTelInput.css"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/intl-tel-input@26.7.5/build/js/intlTelInput.min.js"
+        ></script>
+        <script type="module" src="/scripts/global.js"></script>
+        <script type="module" src="/scripts/sheet.js"></script>
     </head>
     <body class="font-golos leading-tight text-sm" x-data>
         <slot />

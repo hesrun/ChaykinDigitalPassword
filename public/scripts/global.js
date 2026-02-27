@@ -1,6 +1,3 @@
-import intlTelInput from "intl-tel-input";
-import "intl-tel-input/build/css/intlTelInput.css";
-
 function initAllTelInputs() {
     const telInputs = document.querySelectorAll('input[type="tel"]');
     telInputs.forEach((input) => {
