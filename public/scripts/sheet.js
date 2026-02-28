@@ -9,54 +9,44 @@
 
 (() => {
     const BASE_Z = 200;
-    const Z_STEP = 10; // backdrop = BASE_Z + idx*Z_STEP, sheet = +1
+    const Z_STEP = 10;
 
-    // [{ id, sheetEl, backdropEl }]
+    // [{ id, rootEl, sheetEl, backdropEl }]
     const stack = [];
 
     /* ─── Открыть ─── */
     function open(id) {
-        const template = document.querySelector(`[data-sheet-id="${id}"]`);
-        if (!template) {
+        const rootEl = document.querySelector(`[data-sheet-id="${id}"]`);
+
+        if (!rootEl) {
             console.warn(`ActionSheet: шит "${id}" не найден`);
             return;
         }
         if (stack.find((s) => s.id === id)) return;
 
+        const backdropEl = rootEl.querySelector("[data-sheet-backdrop]");
+        const sheetEl = rootEl.querySelector("[data-sheet-panel]");
+        const handleEl = rootEl.querySelector("[data-sheet-handle]");
+
         const idx = stack.length;
+        rootEl.style.zIndex = BASE_Z + idx * Z_STEP;
 
-        // Backdrop
-        const backdropEl = document.createElement("div");
-        backdropEl.className = "as-backdrop";
-        backdropEl.style.zIndex = BASE_Z + idx * Z_STEP;
-        backdropEl.addEventListener("click", () => close(id));
-        document.body.appendChild(backdropEl);
+        if (!rootEl.dataset.sheetInitialized) {
+            backdropEl.addEventListener("click", () => close(id));
+            enableSwipeToClose(sheetEl, handleEl, id);
+            rootEl.dataset.sheetInitialized = "1";
+        }
 
-        // Sheet
-        const sheetEl = document.createElement("div");
-        sheetEl.className = "as-sheet";
-        sheetEl.setAttribute("role", "dialog");
-        sheetEl.setAttribute("aria-modal", "true");
-        sheetEl.style.zIndex = BASE_Z + idx * Z_STEP + 1;
+        stack.push({ id, rootEl, sheetEl, backdropEl });
 
-        // Handle
-        const handle = document.createElement("div");
-        handle.className = "as-handle";
-        sheetEl.appendChild(handle);
-        sheetEl.appendChild(template.content.cloneNode(true));
-        document.body.appendChild(sheetEl);
+        rootEl.classList.add("as-sheet-item--open"); // показываем контейнер
 
-        stack.push({ id, sheetEl, backdropEl });
-
-        // double rAF — гарантирует что transition сработает
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
                 backdropEl.classList.add("as-backdrop--visible");
-                sheetEl.classList.add("as-sheet--open");
+                sheetEl.classList.add("as-sheet--open"); // анимируем шит
             });
         });
-
-        enableSwipeToClose(sheetEl, handle, id);
     }
 
     /* ─── Закрыть ─── */
@@ -64,7 +54,7 @@
         const idx = stack.findIndex((s) => s.id === id);
         if (idx === -1) return;
 
-        const { sheetEl, backdropEl } = stack[idx];
+        const { rootEl, sheetEl, backdropEl } = stack[idx];
         stack.splice(idx, 1);
 
         sheetEl.classList.remove("as-sheet--open");
@@ -72,13 +62,12 @@
         backdropEl.classList.remove("as-backdrop--visible");
 
         const cleanup = () => {
-            sheetEl.remove();
-            backdropEl.remove();
+            sheetEl.classList.remove("as-sheet--closing");
+            rootEl.classList.remove("as-sheet-item--open"); // скрываем контейнер после анимации
         };
         sheetEl.addEventListener("transitionend", cleanup, { once: true });
         setTimeout(cleanup, 450);
     }
-
     function closeAll() {
         [...stack].reverse().forEach((s) => close(s.id));
     }
@@ -91,13 +80,8 @@
         let velocity = 0;
         let isDragging = false;
 
-        function canStart(target) {
-            // Разрешить свайп только если начало на as-handle
-            return target === handleEl;
-        }
-
         function onStart(clientY, target) {
-            if (!canStart(target)) return;
+            if (target !== handleEl) return;
             isDragging = true;
             startY = lastY = clientY;
             lastTime = Date.now();
@@ -176,10 +160,16 @@
     /* ─── Декларативные атрибуты ─── */
     document.addEventListener("click", (e) => {
         const opener = e.target.closest("[data-sheet-open]");
-        if (opener) open(opener.dataset.sheetOpen);
+        if (opener) {
+            e.preventDefault();
+            open(opener.dataset.sheetOpen);
+        }
 
         const closer = e.target.closest("[data-sheet-close]");
-        if (closer) close(closer.dataset.sheetClose);
+        if (closer) {
+            e.preventDefault();
+            close(closer.dataset.sheetClose);
+        }
     });
 
     document.addEventListener("keydown", (e) => {

@@ -59,7 +59,10 @@ const products = [
         </RoundButton>
         <Title as="h1" class="my-4">Коллекция мануфактуры</Title>
         <div class="mb-4">
-            <WatchDrop />
+            <WatchDrop
+                position="bottom"
+                subtitle="Показаны ремешки для модели"
+            />
         </div>
         <div class="grid grid-cols-2 gap-x-2 gap-y-5">
             {
@@ -84,4 +87,4 @@ const products = [
     </ScreenBody>
 </ScreenLayout>
 <StrapSheet />
-<NavBar />
+<NavBar active="studio" />

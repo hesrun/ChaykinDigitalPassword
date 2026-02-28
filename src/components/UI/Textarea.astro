@@ -1,0 +1,27 @@
+---
+import clsx from "clsx";
+interface Props {
+    id?: string;
+    name: string;
+    class?: string;
+    disabled?: boolean;
+    required?: boolean;
+    placeholder?: string;
+}
+const {
+    id,
+    name,
+    class: className = "",
+    disabled = false,
+    required = false,
+    placeholder = "",
+} = Astro.props;
+---
+
+<textarea
+    id={id ?? name}
+    name={name}
+    class={clsx("c-textarea", className)}
+    disabled={disabled}
+    required={required}
+    placeholder={placeholder}></textarea>

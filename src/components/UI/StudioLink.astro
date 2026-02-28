@@ -8,6 +8,7 @@ interface StudioLinkProps {
     title: string;
     description: string;
     img?: string;
+    dataSheetOpen?: string;
 }
 
 const {
@@ -16,6 +17,7 @@ const {
     description,
     img,
     variant = "default",
+    dataSheetOpen,
 } = Astro.props as StudioLinkProps;
 ---
 
@@ -23,6 +25,7 @@ const {
     variant === "minimal" ? (
         <a
             href={href}
+            {...(dataSheetOpen ? { "data-sheet-open": dataSheetOpen } : {})}
             class="flex justify-between items-center px-4 py-8 border-b border-line active:bg-primary/5"
         >
             <div>
@@ -36,6 +39,7 @@ const {
     ) : (
         <a
             href={href}
+            {...(dataSheetOpen ? { "data-sheet-open": dataSheetOpen } : {})}
             class="block p-4 border-b border-line active:bg-primary/5"
         >
             <div class="flex items-center gap-4">

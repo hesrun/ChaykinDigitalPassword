@@ -5,7 +5,16 @@ export interface Props {
     id?: string;
     name: string;
     label?: string;
-    type: "text" | "email" | "password" | "number" | "tel" | "url";
+    type:
+        | "text"
+        | "email"
+        | "password"
+        | "number"
+        | "tel"
+        | "url"
+        | "date"
+        | "time"
+        | "datetime-local";
     variant?: "floating" | "standard";
     class?: string;
     disabled?: boolean;
@@ -29,6 +38,11 @@ const {
 
 const inputId = id ?? name;
 const isFloating = variant === "floating";
+
+const isDate = type === "date";
+const isTime = type === "time";
+const isNative = isDate || isTime;
+const inputType = isNative ? "text" : type;
 ---
 
 {
@@ -37,10 +51,14 @@ const isFloating = variant === "floating";
             <input
                 id={inputId}
                 name={name}
-                type={type}
-                placeholder={placeholder}
+                type={inputType}
+                placeholder={""}
                 disabled={disabled}
                 required={required}
+                onfocus={isNative ? `this.type='${type}'` : undefined}
+                onblur={
+                    isNative ? "if(!this.value) this.type='text'" : undefined
+                }
                 class={clsx(
                     "c-input__input c-input__input_floating peer",
                     isTextcenter && "text-center",
@@ -60,11 +78,15 @@ const isFloating = variant === "floating";
             <input
                 id={inputId}
                 name={name}
-                type={type}
+                type={inputType}
                 disabled={disabled}
                 required={required}
+                onfocus={isNative ? `this.type='${type}'` : undefined}
+                onblur={
+                    isNative ? "if(!this.value) this.type='text'" : undefined
+                }
                 class={clsx("c-input__input", isTextcenter && "text-center")}
-                placeholder={placeholder}
+                placeholder={placeholder || (isNative ? label : "")}
             />
         </div>
     )

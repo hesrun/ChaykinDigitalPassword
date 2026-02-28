@@ -11,6 +11,7 @@
     --color-medium: #737373;
     --color-line: #d4d4d4;
     --color-card: #f5f5f5;
+    --shadow-default: 0 0px 40px 0px rgba(0, 0, 0, 0.1);
     --animate-spin: spin 0.5s linear infinite;
 }
 
@@ -32,7 +33,7 @@
 @layer components {
     /* button classes */
     .btn {
-        @apply font-roboto roboto-flex-custom font-semibold rounded-lg transition-colors duration-200 w-full py-5 px-2 disabled:cursor-not-allowed disabled:opacity-50 flex items-center justify-center;
+        @apply font-roboto roboto-flex-custom flex items-center justify-center gap-4 font-semibold rounded-lg transition-colors duration-200 w-full  disabled:cursor-not-allowed disabled:opacity-50;
     }
     .btn-primary {
         @apply bg-primary text-white active:bg-primary-light disabled:bg-primary-dark disabled:text-gray-500;
@@ -41,15 +42,27 @@
         @apply bg-gray-100 text-gray-700 active:bg-gray-300 disabled:bg-gray-100 disabled:text-gray-400;
     }
     .btn-white {
-        @apply bg-white text-gray-700 active:bg-gray-100 disabled:bg-gray-100 disabled:text-gray-400;
+        @apply bg-white text-gray-700 active:bg-gray-200 disabled:bg-gray-100 disabled:text-gray-400;
+    }
+    .btn-transparent {
+        @apply bg-black/5 text-white border border-white/15 active:bg-white/15 backdrop-filter backdrop-blur-sm;
+    }
+    .btn-outline {
+        @apply bg-transparent border border-line text-neutral-600 active:bg-neutral-100 disabled:border-gray-300 disabled:text-gray-400 disabled:bg-transparent;
     }
     .btn-loading {
         @apply pointer-events-none;
     }
+    .btn-medium {
+        @apply min-h-14 py-2 px-2;
+    }
+    .btn-small {
+        @apply text-sm h-10 text-xs;
+    }
 
     /* input classes */
     .c-input__input {
-        @apply w-full h-14 rounded-lg bg-[#F5F5F5] text-sm text-gray-900 px-3 py-2 outline-none transition disabled:cursor-not-allowed disabled:opacity-60;
+        @apply w-full h-14 rounded-lg bg-card text-sm text-gray-900 px-3 py-2 outline-none transition disabled:cursor-not-allowed disabled:opacity-60;
     }
     .c-input__label {
         @apply text-sm font-medium text-gray-700 mb-1 block;
@@ -62,6 +75,14 @@
     }
     .c-input__label_floating {
         @apply pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-4 peer-focus:text-xs peer-focus:text-primary peer-not-placeholder-shown:top-4 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-primary;
+    }
+
+    /* textarea classes */
+    .c-textarea {
+        @apply w-full h-45 rounded-lg bg-card text-sm text-gray-900 px-3 py-2 outline-none transition disabled:cursor-not-allowed disabled:opacity-60;
+        &::placeholder {
+            @apply text-gray-700;
+        }
     }
 }
 

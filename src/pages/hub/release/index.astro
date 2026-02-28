@@ -1,0 +1,52 @@
+---
+import { BadgeCheck, CalendarPlus, Clock } from "@lucide/astro";
+import NavBar from "@src/components/layouts/NavBar.astro";
+import ScreenBody from "@src/components/layouts/ScreenBody.astro";
+import Banner from "@src/components/UI/Banner.astro";
+import Button from "@src/components/UI/Button.astro";
+import Title from "@src/components/UI/Title.astro";
+import ScreenLayout from "@src/layouts/ScreenLayout.astro";
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <Banner bg="/img/hub/banner-2.jpg" size="medium" blackLink="/hub" />
+        <div class="mt-4 grid gap-4">
+            <div class="grid gap-2.5">
+                <Title as="h2">Ристмон «Stargazer»</Title>
+                <p>Лимитированная серия, 12 экземпляров</p>
+                <p class="text-medium">
+                    Первый в истории мануфактуры ристмон с указателем
+                    астрономического времени Марса. Корпус из булатной стали.
+                </p>
+            </div>
+
+            <div class="bg-card rounded-2xl p-4 grid gap-4">
+                <Title as="h4">Доступен предзаказ</Title>
+                <div class="flex gap-2.5 items-center">
+                    <Clock stroke-width={1} class="text-primary" />
+                    <div class="grid">
+                        <span class="text-medium text-xs"
+                            >Предзаказ закроется через</span
+                        >
+                        12:00:00
+                    </div>
+                </div>
+                <Button variant="primary">Подать заявку</Button>
+            </div>
+            <div class="bg-card rounded-2xl p-4 grid gap-4">
+                <BadgeCheck
+                    stroke-width={1}
+                    fill={`var(--color-green-500)`}
+                    class="text-white"
+                />
+                <Title as="h4">Ваша заявка принята под номером #4</Title>
+                <span class="text-medium"
+                    >Менеджер мануфактуры свяжется с вами</span
+                >
+            </div>
+        </div>
+    </ScreenBody>
+</ScreenLayout>
+
+<NavBar active="access-hub" />

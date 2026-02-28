@@ -10,8 +10,11 @@ interface Props {
 const { title, content } = Astro.props;
 ---
 
-<div class="bg-card rounded-lg p-4" data-accordion>
-    <div class="flex items-center justify-between cursor-pointer" data-trigger>
+<div class="bg-card rounded-lg" data-accordion>
+    <div
+        class="flex items-center justify-between cursor-pointer p-4 active:text-primary"
+        data-trigger
+    >
         <Title as="h6">{title}</Title>
         <ChevronDown
             stroke-width={1}
@@ -24,7 +27,9 @@ const { title, content } = Astro.props;
         data-content
     >
         <div class="min-h-0">
-            <p class="pt-2 text-medium">{content}</p>
+            <div class="p-4 pt-0">
+                <p class="text-medium">{content}</p>
+            </div>
         </div>
     </div>
 </div>
@@ -57,5 +62,4 @@ const { title, content } = Astro.props;
     }
 
     initAccordions();
-    document.addEventListener("astro:page-load", initAccordions);
 </script>

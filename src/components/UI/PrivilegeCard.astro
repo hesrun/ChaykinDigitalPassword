@@ -1,0 +1,23 @@
+---
+import Button from "./Button.astro";
+import Title from "./Title.astro";
+
+interface Props {
+    imgSrc: string;
+    title: string;
+    description: string;
+    btnText: string;
+    btnHref: string;
+}
+---
+
+<div class="p-4 grid gap-3 bg-card rounded-2xl">
+    <div class="flex gap-3 items-center">
+        <img src={Astro.props.imgSrc} alt="" class="w-20 rounded-2xl" />
+        <Title as="h5">{Astro.props.title}</Title>
+    </div>
+    <p class="text-sm text-gray-500">{Astro.props.description}</p>
+    <Button href={Astro.props.btnHref} variant="white">
+        {Astro.props.btnText}
+    </Button>
+</div>

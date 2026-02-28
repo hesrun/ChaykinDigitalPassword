@@ -1,10 +1,17 @@
+---
+interface Props {
+    active?: "my-watches" | "access-hub" | "studio" | "settings" | "chat";
+}
+const { active } = Astro.props;
+---
+
 <div class="fixed bottom-0 p-3 w-full">
     <div
-        class="flex w-full justify-around bg-white/80 backdrop-blur-sm rounded-full shadow-[0_4px_24px_0_rgba(0,0,0,0.10)] text-[9px] text-gray-500"
+        class="flex w-full justify-around bg-white/80 backdrop-blur-sm rounded-full shadow-default text-[9px] text-gray-500"
     >
         <a
-            href=""
-            class="flex flex-col items-center justify-center gap-1 py-2 flex-1 rounded-full active:bg-primary/5 transition-colors bg-white text-primary"
+            href="/main"
+            class={`flex flex-col items-center justify-center gap-1 py-2 flex-1 rounded-full active:bg-primary/5 transition-colors ${active === "my-watches" ? "bg-white text-primary" : "text-gray-500"}`}
         >
             <svg
                 width="24"
@@ -22,8 +29,8 @@
             Мои часы
         </a>
         <a
-            href=""
-            class="flex flex-col items-center justify-center gap-1 py-2 flex-1 rounded-full active:bg-primary/5 transition-colors"
+            href="/hub"
+            class={`flex flex-col items-center justify-center gap-1 py-2 flex-1 rounded-full active:bg-primary/5 transition-colors ${active === "access-hub" ? "bg-white text-primary" : "text-gray-500"}`}
         >
             <svg
                 width="26"
@@ -41,8 +48,8 @@
             Access Hub
         </a>
         <a
-            href=""
-            class="flex flex-col items-center justify-center gap-1 py-2 flex-1 rounded-full active:bg-primary/5 transition-colors"
+            href="/studio"
+            class={`flex flex-col items-center justify-center gap-1 py-2 flex-1 rounded-full active:bg-primary/5 transition-colors ${active === "studio" ? "bg-white text-primary" : "text-gray-500"}`}
         >
             <svg
                 width="24"
@@ -52,16 +59,17 @@
                 xmlns="http://www.w3.org/2000/svg"
             >
                 <path
-                    d="M7 17L7.48551 19.4276C7.66878 20.3439 7.76041 20.8021 7.99964 21.1448C8.2106 21.447 8.50097 21.685 8.83869 21.8326C9.22166 22 9.6889 22 10.6234 22H13.3766C14.3111 22 14.7783 22 15.1613 21.8326C15.499 21.685 15.7894 21.447 16.0004 21.1448C16.2396 20.8021 16.3312 20.3439 16.5145 19.4276L17 17M7 7L7.48551 4.57243C7.66878 3.6561 7.76041 3.19793 7.99964 2.85522C8.2106 2.55301 8.50097 2.31497 8.83869 2.16737C9.22166 2 9.6889 2 10.6234 2H13.3766C14.3111 2 14.7783 2 15.1613 2.16737C15.499 2.31497 15.7894 2.55301 16.0004 2.85522C16.2396 3.19793 16.3312 3.6561 16.5145 4.57243L17 7M12 9V12L13.5 13.5M19 12C19 15.866 15.866 19 12 19C8.13401 19 5 15.866 5 12C5 8.13401 8.13401 5 12 5C15.866 5 19 8.13401 19 12Z"
+                    d="M14.5 19L16.5 21L21 16.5M21.9851 12.5499C21.995 12.3678 22 12.1845 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.4354 6.33651 21.858 11.7385 21.9966M12 6V12L15.7384 13.8692"
                     stroke="currentColor"
                     stroke-linecap="round"
                     stroke-linejoin="round"></path>
             </svg>
+
             Ателье
         </a>
         <a
             href=""
-            class="flex flex-col items-center justify-center gap-1 py-2 flex-1 rounded-full active:bg-primary/5 transition-colors"
+            class={`flex flex-col items-center justify-center gap-1 py-2 flex-1 rounded-full active:bg-primary/5 transition-colors ${active === "settings" ? "bg-white text-primary" : "text-gray-500"}`}
         >
             <svg
                 width="24"
@@ -78,7 +86,7 @@
         </a>
         <a
             href=""
-            class="flex flex-col items-center justify-center gap-1 py-2 flex-1 rounded-full active:bg-primary/5 transition-colors"
+            class={`flex flex-col items-center justify-center gap-1 py-2 flex-1 rounded-full active:bg-primary/5 transition-colors ${active === "chat" ? "bg-white text-primary" : "text-gray-500"}`}
         >
             <svg
                 width="24"

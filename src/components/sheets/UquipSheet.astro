@@ -1,0 +1,33 @@
+---
+import BottomSheet from "../layouts/bottomSheet/BottomSheet.astro";
+import SheetContainer from "../layouts/bottomSheet/SheetContainer.astro";
+import Button from "../UI/Button.astro";
+import Title from "../UI/Title.astro";
+import WatchDrop from "../UI/WatchDrop.astro";
+---
+
+<BottomSheet id="box">
+    <SheetContainer>
+        <div class="grid gap-4">
+            <img
+                class="w-full rounded-2xl"
+                src="/img/studio/straps/box.jpg"
+                alt=""
+            />
+            <div>
+                <div class="mb-4">
+                    <Title as="h1">Фирменная шкатулка</Title>
+                    <div class="text-medium mt-2">Дерево/Лак/Кожа</div>
+                </div>
+                <p>
+                    Константин Чайкин считает, что коллекционный часовой ремешок
+                    может быть убедительным свидетельством творческого подхода к
+                    дизайну
+                </p>
+            </div>
+            <Title as="h3">22 000 ₽</Title>
+            <WatchDrop position="top" subtitle="Выбор для модели" />
+            <Button variant="primary">Восстановить</Button>
+        </div>
+    </SheetContainer>
+</BottomSheet>

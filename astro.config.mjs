@@ -1,9 +1,11 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import { fileURLToPath } from "url";
-import { resolve } from "path";
 
 export default defineConfig({
+    devToolbar: {
+        enabled: false,
+    },
     compressHTML: false,
     vite: {
         plugins: [tailwindcss()],

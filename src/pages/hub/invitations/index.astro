@@ -1,0 +1,78 @@
+---
+import { BadgeCheck, CalendarPlus } from "@lucide/astro";
+import NavBar from "@src/components/layouts/NavBar.astro";
+import ScreenBody from "@src/components/layouts/ScreenBody.astro";
+import Banner from "@src/components/UI/Banner.astro";
+import Button from "@src/components/UI/Button.astro";
+import Title from "@src/components/UI/Title.astro";
+import ScreenLayout from "@src/layouts/ScreenLayout.astro";
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <Banner bg="/img/hub/banner-1.jpg" size="medium" blackLink="/hub" />
+        <div class="mt-4 grid gap-4">
+            <div class="grid gap-2.5">
+                <Title as="h2">Ежегодная встреча владельцев</Title>
+                <p class="text-medium">
+                    Прикоснитесь к тайне рождения времени. Закрытая экскурсия в
+                    сердце российского высокого часового искусства
+                </p>
+            </div>
+            <div class="grid gap-3 grid-cols-2">
+                <div class="grid">
+                    <span class="text-medium text-xs">Дата и время</span>
+                    15 Ноября 2026, 19:00
+                </div>
+                <div class="grid">
+                    <span class="text-medium text-xs">Дресс-код</span>
+                    Cocktail
+                </div>
+                <div class="grid col-span-2">
+                    <span class="text-medium text-xs">Локация</span>
+                    Москва, Реутовская мануфактура
+                </div>
+            </div>
+            <div>
+                <Button variant="outline" size="small">Открыть в картах</Button>
+            </div>
+            <div class="bg-card rounded-2xl p-4 grid gap-4">
+                <Title as="h4">Вы приглашены</Title>
+                <div class="grid gap-2">
+                    <Button variant="primary">Подтвердить участие</Button>
+                    <Button variant="white">Отклонить</Button>
+                </div>
+            </div>
+            <div class="bg-card rounded-2xl p-4 grid gap-4">
+                <Title as="h4">Будете один или +1?</Title>
+                <span class="text-medium"
+                    >Приглашение действительно на две персоны</span
+                >
+                <div class="grid gap-2 grid-cols-2">
+                    <Button variant="primary">Буду один</Button>
+                    <Button variant="white">Буду +1</Button>
+                </div>
+            </div>
+            <div class="bg-card rounded-2xl p-4 grid gap-4">
+                <BadgeCheck
+                    stroke-width={1}
+                    fill={`var(--color-green-500)`}
+                    class="text-white"
+                />
+                <Title as="h4">Вы приняли приглашение</Title>
+                <span class="text-medium"
+                    >Будем рады видеть вас 15 Ноября 2026, 19:00 в Мануфактуре
+                    Константина Чайкина</span
+                >
+                <div class="grid gap-2">
+                    <Button variant="white">
+                        <CalendarPlus stroke-width={1} class="text-primary" />
+                        Добавить в календарь
+                    </Button>
+                </div>
+            </div>
+        </div>
+    </ScreenBody>
+</ScreenLayout>
+
+<NavBar active="access-hub" />

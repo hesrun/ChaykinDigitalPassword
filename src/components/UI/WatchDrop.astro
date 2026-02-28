@@ -7,6 +7,12 @@ const watches = [
     { name: "Carpe Diem", img: "/img/studio/straps/watch.png" },
     { name: "Carpe Diem 2", img: "/img/studio/straps/watch.png" },
 ];
+
+interface Props {
+    subtitle?: string;
+    position?: "top" | "bottom";
+}
+const { position = "bottom", subtitle = "" } = Astro.props;
 ---
 
 <div class="relative group" id="watchDropdown" data-open="false">
@@ -23,7 +29,7 @@ const watches = [
         />
         <div class="flex-1 grid gap-1 pointer-events-none">
             <Title as="h6">{watches[0].name}</Title>
-            <span class="text-medium">Показаны ремешки для модели</span>
+            <span class="text-medium">{subtitle}</span>
         </div>
         <ChevronDown
             stroke-width={1}
@@ -32,7 +38,7 @@ const watches = [
     </button>
 
     <div
-        class="absolute top-full left-0 w-full mt-2 bg-card rounded-3xl shadow-2xl overflow-hidden z-10 transition-all duration-200 opacity-0 -translate-y-1 pointer-events-none group-data-[open=true]:opacity-100 group-data-[open=true]:translate-y-0 group-data-[open=true]:pointer-events-auto"
+        class={`absolute ${position === "bottom" ? "top-full mt-2" : "bottom-full mb-2"} left-0 w-full bg-card rounded-3xl shadow-default overflow-hidden z-10 transition-all duration-200 opacity-0 -translate-y-1 pointer-events-none group-data-[open=true]:opacity-100 group-data-[open=true]:translate-y-0 group-data-[open=true]:pointer-events-auto`}
     >
         {
             watches.map((item, index) => (

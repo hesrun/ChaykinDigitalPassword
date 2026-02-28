@@ -4,28 +4,29 @@ import ScreenLayout from "@layouts/ScreenLayout.astro";
 import NavBar from "@components/layouts/NavBar.astro";
 import Banner from "@components/UI/Banner.astro";
 import StudioLink from "@src/components/UI/StudioLink.astro";
+import UquipSheet from "@src/components/sheets/UquipSheet.astro";
 
 const nav = [
     {
-        href: "/studio/equipment/equipmentCollection",
         title: "Фирменная шкатулка",
         description: "Дерево/Лак/Кожа",
+        dataSheetOpen: "box",
     },
     {
-        href: "/studio/equipment/equipmentProduce",
         title: "Пакет документов",
         description: "Дубликаты инструкций, сервисная книжка",
+        dataSheetOpen: "box",
     },
     {
-        href: "/studio/equipment/equipmentProduce",
         title: "Гарантийная карта",
         description: "Физический пластик с голограммой",
+        dataSheetOpen: "box",
     },
 
     {
-        href: "/studio/equipment/equipmentProduce",
         title: "Архивная выписка",
         description: "Полный цифровой паспорт .pdf",
+        dataSheetOpen: "box",
     },
 ];
 ---
@@ -43,13 +44,14 @@ const nav = [
                 nav.map((item) => (
                     <StudioLink
                         variant="minimal"
-                        href={item.href}
                         title={item.title}
                         description={item.description}
+                        dataSheetOpen={item.dataSheetOpen}
                     />
                 ))
             }
         </div>
     </ScreenBody>
 </ScreenLayout>
-<NavBar />
+<NavBar active="studio" />
+<UquipSheet />

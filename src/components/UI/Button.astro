@@ -2,8 +2,9 @@
 import clsx from "clsx";
 
 export interface Props {
-    variant?: "primary" | "secondary" | "white";
+    variant?: "primary" | "secondary" | "white" | "transparent" | "outline";
     type?: "button" | "submit" | "reset";
+    size?: "small" | "medium";
     class?: string;
     disabled?: boolean;
     isLoading?: boolean;
@@ -16,6 +17,7 @@ const {
     disabled = false,
     isLoading = false,
     variant = "primary",
+    size = "medium",
     href = "#",
 } = Astro.props;
 const Tag = href ? "a" : "button";
@@ -25,10 +27,16 @@ const Tag = href ? "a" : "button";
     href={href ? href : undefined}
     type={type}
     disabled={disabled}
-    class={clsx("btn", `btn-${variant}`, isLoading && "btn-loading", className)}
+    class={clsx(
+        "btn",
+        `btn-${variant}`,
+        `btn-${size}`,
+        isLoading && "btn-loading",
+        className,
+    )}
 >
+    <slot name="icon" />
     <slot />
-
     {
         isLoading && (
             <span class="ml-2 animate-spin border-2 border-t-transparent border-current rounded-full w-4 h-4" />

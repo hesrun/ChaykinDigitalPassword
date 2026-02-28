@@ -1,10 +1,4 @@
 ---
-// ActionSheet.astro
-//
-// <ActionSheet id="mySheet">
-//   ...контент...
-// </ActionSheet>
-
 interface Props {
     id: string;
 }
@@ -12,6 +6,10 @@ interface Props {
 const { id } = Astro.props;
 ---
 
-<template data-sheet-id={id}>
-    <slot />
-</template>
+<div class="as-sheet-item" data-sheet-id={id}>
+    <div class="as-backdrop" data-sheet-backdrop></div>
+    <div class="as-sheet" data-sheet-panel role="dialog" aria-modal="true">
+        <div class="as-handle" data-sheet-handle></div>
+        <slot />
+    </div>
+</div>

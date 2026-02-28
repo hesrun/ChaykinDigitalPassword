@@ -1,0 +1,157 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import Title from "@components/UI/Title.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import RoundButton from "@components/UI/RoundButton.astro";
+import NavBar from "@components/layouts/NavBar.astro";
+import { Bell, CircleCheck, Clock } from "@lucide/astro";
+import Button from "@src/components/UI/Button.astro";
+import PrivilegeCard from "@src/components/UI/PrivilegeCard.astro";
+import EventCard from "@src/components/UI/EventCard.astro";
+
+const releases = [
+    {
+        imgSrc: "/img/hub/preview-1.jpg",
+        title: "Ристмон «Stargazer»",
+        description:
+            "Короткий текст релиза, который может поместиться в две строки и не обрезаться на мобильных устройствах",
+        btnText: "Перейти к релизу",
+        btnHref: "/hub/release",
+    },
+    {
+        imgSrc: "/img/hub/preview-2.jpg",
+        title: "Ристмон «Stargazer»",
+        description:
+            "Короткий текст релиза, который может поместиться в две строки и не обрезаться на мобильных устройствах",
+        btnText: "Перейти к релизу",
+        btnHref: "/hub/release",
+    },
+];
+
+const privelegios = [
+    {
+        imgSrc: "/img/hub/preview-1.jpg",
+        title: "Визит в Мануфактуру",
+        description:
+            "Узнайте, как создаются ваши часы. Посещение сборочного цеха и встреча с ведущими часовщиками",
+        btnText: "Записаться",
+        btnHref: "/hub/privilege",
+    },
+    {
+        imgSrc: "/img/hub/preview-2.jpg",
+        title: "Приоритетный сервис",
+        description:
+            "Узнайте, как создаются ваши часы. Посещение сборочного цеха и встреча с ведущими часовщиками",
+        btnText: "Записаться",
+        btnHref: "/hub/privilege",
+    },
+];
+
+const events = [
+    {
+        title: 'Презентация "Звездочет"',
+        state: "Вы посетили",
+        location: "Москва, Мануфактура",
+        date: "25 октября",
+        icon: "CircleCheck",
+        href: "/hub/invitations",
+    },
+    {
+        title: 'Презентация "Звездочет"',
+        state: "Срок приглашения истёк",
+        location: "Москва, Мануфактура",
+        date: "25 октября",
+        icon: "Clock",
+        href: "/hub/invitations",
+    },
+];
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <div class="flex justify-between items-center mb-4">
+            <Title as="h1">Access Hub</Title>
+            <RoundButton variant="gray">
+                <Bell stroke-width={1} />
+                <span
+                    class="w-2 h-2 bg-primary rounded-full block absolute top-0.5 right-0.5"
+                ></span>
+            </RoundButton>
+        </div>
+        <hr class="border-t border-line mb-4" />
+        <div class="grid gap-6">
+            <div class="grid gap-4">
+                <Title as="h3">Приглашения</Title>
+                <div class="relative">
+                    <img
+                        src="/img/hub/inqury.jpg"
+                        alt=""
+                        class="w-full rounded-2xl"
+                    />
+                    <div
+                        class="absolute inset-0 flex flex-col justify-end p-4 text-white gap-2"
+                    >
+                        <Title as="h5">Geneva Watch Days</Title>
+                        <p>
+                            Ежегодная закрытая встреча коллекционеров и друзей
+                            мануфактуры, презентация уникального калибра
+                        </p>
+                        <span class="text-medium">
+                            Москва, Мануфактура 25 октября
+                        </span>
+                        <Button href="/hub/invitations" variant="transparent"
+                            >Подробнее</Button
+                        >
+                    </div>
+                </div>
+            </div>
+            <div class="grid gap-4">
+                <Title as="h3">Релизы</Title>
+                {
+                    releases.map((item) => (
+                        <PrivilegeCard
+                            imgSrc={item.imgSrc}
+                            title={item.title}
+                            description={item.description}
+                            btnText={item.btnText}
+                            btnHref={item.btnHref}
+                        />
+                    ))
+                }
+            </div>
+            <div class="grid gap-4">
+                <Title as="h3">Ваши привилегии</Title>
+                {
+                    privelegios.map((item) => (
+                        <PrivilegeCard
+                            imgSrc={item.imgSrc}
+                            title={item.title}
+                            description={item.description}
+                            btnText={item.btnText}
+                            btnHref={item.btnHref}
+                        />
+                    ))
+                }
+            </div>
+            <div class="grid gap-4">
+                <Title as="h3">История мероприятий</Title>
+                <div class="-mx-4 px-4 flex overflow-auto gap-2">
+                    {
+                        events.map((item) => (
+                            <EventCard
+                                title={item.title}
+                                state={item.state}
+                                location={item.location}
+                                date={item.date}
+                                icon={item.icon}
+                                href={item.href}
+                            />
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </ScreenBody>
+</ScreenLayout>
+
+<NavBar active="access-hub" />
