@@ -38,11 +38,6 @@ const {
 
 const inputId = id ?? name;
 const isFloating = variant === "floating";
-
-const isDate = type === "date";
-const isTime = type === "time";
-const isNative = isDate || isTime;
-const inputType = isNative ? "text" : type;
 ---
 
 {
@@ -51,14 +46,10 @@ const inputType = isNative ? "text" : type;
             <input
                 id={inputId}
                 name={name}
-                type={inputType}
+                type={type}
                 placeholder={""}
                 disabled={disabled}
                 required={required}
-                onfocus={isNative ? `this.type='${type}'` : undefined}
-                onblur={
-                    isNative ? "if(!this.value) this.type='text'" : undefined
-                }
                 class={clsx(
                     "c-input__input c-input__input_floating peer",
                     isTextcenter && "text-center",
@@ -78,15 +69,11 @@ const inputType = isNative ? "text" : type;
             <input
                 id={inputId}
                 name={name}
-                type={inputType}
+                type={type}
                 disabled={disabled}
                 required={required}
-                onfocus={isNative ? `this.type='${type}'` : undefined}
-                onblur={
-                    isNative ? "if(!this.value) this.type='text'" : undefined
-                }
                 class={clsx("c-input__input", isTextcenter && "text-center")}
-                placeholder={placeholder || (isNative ? label : "")}
+                placeholder={placeholder || label}
             />
         </div>
     )
