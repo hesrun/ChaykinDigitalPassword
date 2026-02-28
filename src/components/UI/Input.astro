@@ -21,6 +21,15 @@ export interface Props {
     required?: boolean;
     placeholder?: string;
     isTextcenter?: boolean;
+    inputmode?:
+        | "none"
+        | "text"
+        | "decimal"
+        | "numeric"
+        | "tel"
+        | "search"
+        | "email"
+        | "url";
 }
 
 const {
@@ -34,6 +43,7 @@ const {
     required = false,
     placeholder = "",
     isTextcenter = false,
+    inputmode = undefined,
 } = Astro.props;
 
 const inputId = id ?? name;
@@ -59,6 +69,7 @@ const inputType = isNative ? "text" : type;
                 onblur={
                     isNative ? "if(!this.value) this.type='text'" : undefined
                 }
+                {...(inputmode ? { inputmode } : {})}
                 class={clsx(
                     "c-input__input c-input__input_floating peer",
                     isTextcenter && "text-center",
@@ -87,6 +98,7 @@ const inputType = isNative ? "text" : type;
                 }
                 class={clsx("c-input__input", isTextcenter && "text-center")}
                 placeholder={placeholder || (isNative ? label : "")}
+                {...(inputmode ? { inputmode } : {})}
             />
         </div>
     )
