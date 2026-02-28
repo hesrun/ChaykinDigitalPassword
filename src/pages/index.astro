@@ -4,8 +4,18 @@ import ScreenLayout from "@layouts/ScreenLayout.astro";
 ---
 
 <ScreenLayout>
+    <video
+        class="fixed inset-0 object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+    >
+        <source src="/video/splash.mp4" type="video/mp4" />
+    </video>
     <div
-        class="fixed inset-0 flex flex-col items-center justify-center bg-[url('/src/assets/Splash.jpg')] bg-cover bg-center text-white"
+        class="fixed inset-0 flex flex-col items-center justify-center text-white"
     >
         <svg
             class="mb-5"
@@ -29,3 +39,10 @@ import ScreenLayout from "@layouts/ScreenLayout.astro";
         >
     </div>
 </ScreenLayout>
+
+<script>
+    setTimeout(() => {
+        const nextUrl = "/sign/signin";
+        window.location.href = nextUrl;
+    }, 2000);
+</script>
