@@ -75,6 +75,9 @@
     }
     .c-input_floating .c-input__input {
         @apply pt-5;
+        &::placeholder {
+            @apply text-transparent;
+        }
     }
     .c-input__label_floating {
         @apply pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-4 peer-focus:text-xs peer-focus:text-primary peer-not-placeholder-shown:top-4 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-primary;

@@ -47,7 +47,7 @@ const isFloating = variant === "floating";
                 id={inputId}
                 name={name}
                 type={type}
-                placeholder={""}
+                placeholder={placeholder || label}
                 disabled={disabled}
                 required={required}
                 class={clsx(
