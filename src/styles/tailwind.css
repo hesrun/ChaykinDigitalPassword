@@ -90,6 +90,10 @@
             @apply text-gray-700;
         }
     }
+    input[type="date"],
+    input[type="time"] {
+        -webkit-appearance: none;
+    }
 }
 
 /* 
