@@ -33,7 +33,7 @@
 @layer components {
     /* button classes */
     .btn {
-        @apply font-roboto roboto-flex-custom flex items-center justify-center gap-4 font-semibold rounded-lg transition-colors duration-200 w-full  disabled:cursor-not-allowed disabled:opacity-50;
+        @apply font-roboto roboto-flex-custom flex items-center justify-center gap-4 font-semibold rounded-lg transition-colors duration-200 w-full  disabled:cursor-not-allowed disabled:opacity-50 disabled:pointer-events-none;
     }
     .btn-primary {
         @apply bg-primary text-white active:bg-primary-light disabled:bg-primary-dark disabled:text-gray-500;
