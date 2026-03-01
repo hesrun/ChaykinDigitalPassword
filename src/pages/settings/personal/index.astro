@@ -1,0 +1,49 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import NavBar from "@components/layouts/NavBar.astro";
+import HeaderLayout from "@src/components/layouts/header/HeaderLayout.astro";
+import Header from "@src/components/layouts/header/Header.astro";
+import FooterLayout from "@src/components/layouts/footer/FooterLayout.astro";
+import Button from "@src/components/UI/Button.astro";
+import Input from "@src/components/UI/Input.astro";
+---
+
+<ScreenLayout>
+    <HeaderLayout>
+        <Header title="Личные данные" backUrl="/settings" />
+    </HeaderLayout>
+    <ScreenBody hasNavbr>
+        <div class="grid gap-2">
+            <Input
+                variant="floating"
+                type="text"
+                placeholder="Имя"
+                label="Имя"
+                name="name"
+                inputmode="text"
+            />
+            <Input
+                variant="floating"
+                type="text"
+                placeholder="Телефон (для связи с сервисом и курьерами)"
+                label="Телефон (для связи с сервисом и курьерами)"
+                name="phone"
+                inputmode="tel"
+            />
+            <Input
+                variant="floating"
+                type="text"
+                placeholder="Email"
+                label="Email"
+                name="email"
+                inputmode="email"
+            />
+        </div>
+        <FooterLayout>
+            <Button> Сохранить </Button>
+        </FooterLayout>
+    </ScreenBody>
+
+    <NavBar active="settings" />
+</ScreenLayout>

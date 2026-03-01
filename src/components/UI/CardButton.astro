@@ -1,0 +1,51 @@
+---
+import clsx from "clsx";
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
+export interface CardButtonProps {
+    title: string;
+    type: "link" | "button" | "div";
+    href?: string;
+    icon: AstroComponentFactory;
+    size?: "small" | "medium";
+    dataSheetOpen?: string;
+}
+const {
+    title,
+    href,
+    type = "link",
+    dataSheetOpen,
+    icon: Icon,
+    size = "medium",
+} = Astro.props as CardButtonProps;
+
+const Tag = type === "link" ? "a" : type === "button" ? "button" : "div";
+
+const sizes = {
+    small: "h-25",
+    medium: "h-30",
+};
+
+const actionClasses = {
+    link: "hover:bg-primary/10",
+    button: "active:bg-primary/10",
+    div: "",
+};
+---
+
+<Tag
+    {...href ? { href: href } : {}}
+    {...dataSheetOpen ? { "data-sheet-open": dataSheetOpen } : {}}
+    class={clsx(
+        "bg-card w-full rounded-2xl flex flex-col justify-between gap-4 cursor-pointer items-start text-left p-4",
+        sizes[size],
+        actionClasses[type],
+    )}
+>
+    <Icon size={24} class="text-primary" />
+    <div class="flex justify-between items-end w-full">
+        <span class="font-roboto roboto-flex-custom font-semibold">{title}</span
+        >
+        <slot name="toggle" />
+    </div>
+</Tag>

@@ -1,0 +1,25 @@
+---
+import { ArrowLeft } from "@lucide/astro";
+import Title from "@src/components/UI/Title.astro";
+
+interface Props {
+    title: string;
+    backUrl?: string;
+    as?: "h1" | "h2" | "h3" | "h4";
+}
+const { title, backUrl, as = "h1" } = Astro.props;
+---
+
+<div class="p-4 flex items-center gap-4">
+    {
+        backUrl && (
+            <a
+                href={backUrl}
+                class="text-gray-500 hover:text-gray-700 transition-colors"
+            >
+                <ArrowLeft stroke-width={1} class="text-primary" />
+            </a>
+        )
+    }
+    <Title as={as}>{title}</Title>
+</div>

@@ -1,0 +1,21 @@
+---
+interface Props {
+    id?: string;
+    label?: string;
+    name?: string;
+    checked?: boolean;
+}
+const { id, label, name, checked = false } = Astro.props;
+---
+
+<label for={id} class="toggle">
+    <input
+        type="checkbox"
+        name={name}
+        id={id}
+        checked={checked}
+        class="hidden"
+    />
+    <div class="toggle__btn"></div>
+    <span class="font-roboto font-semibold roboto-flex-custom">{label}</span>
+</label>
