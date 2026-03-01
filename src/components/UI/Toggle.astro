@@ -17,5 +17,11 @@ const { id, label, name, checked = false } = Astro.props;
         class="hidden"
     />
     <div class="toggle__btn"></div>
-    <span class="font-roboto font-semibold roboto-flex-custom">{label}</span>
+    {
+        label && (
+            <span class="font-roboto font-semibold roboto-flex-custom">
+                {label}
+            </span>
+        )
+    }
 </label>
