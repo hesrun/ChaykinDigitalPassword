@@ -4,7 +4,7 @@ import clsx from "clsx";
 export interface Props {
     variant?: "primary" | "secondary" | "white" | "transparent" | "outline";
     type?: "button" | "submit" | "reset";
-    size?: "small" | "medium";
+    size?: "small" | "medium" | "large";
     class?: string;
     disabled?: boolean;
     isLoading?: boolean;
@@ -17,7 +17,7 @@ const {
     disabled = false,
     isLoading = false,
     variant = "primary",
-    size = "medium",
+    size = "large",
     href = "#",
 } = Astro.props;
 const Tag = href ? "a" : "button";

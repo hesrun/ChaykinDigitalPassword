@@ -1,0 +1,66 @@
+---
+interface Option {
+    value: string;
+    label: string;
+}
+
+interface Props {
+    id: string;
+    name: string;
+    label: string;
+    options: Option[];
+    value?: string;
+    error?: string;
+    disabled?: boolean;
+    class?: string;
+}
+
+const {
+    id,
+    name,
+    label,
+    options,
+    value = "",
+    disabled = false,
+    class: className = "",
+} = Astro.props;
+
+const isFilled = value !== "";
+---
+
+<div
+    class:list={["c-select", isFilled && "is-filled", className]}
+    data-select-wrapper
+>
+    <select class="c-select__select" {id} {name} {disabled}>
+        <option value=""></option>
+        {
+            options.map((opt) => (
+                <option value={opt.value} selected={opt.value === value}>
+                    {opt.label}
+                </option>
+            ))
+        }
+    </select>
+
+    <label class="c-select__label" for={id}>
+        {label}
+    </label>
+</div>
+
+<script>
+    document
+        .querySelectorAll<HTMLElement>("[data-select-wrapper]")
+        .forEach((wrapper) => {
+            const select =
+                wrapper.querySelector<HTMLSelectElement>(".c-select__select");
+            if (!select) return;
+
+            const update = () => {
+                wrapper.classList.toggle("is-filled", select.value !== "");
+            };
+
+            select.addEventListener("change", update);
+            update();
+        });
+</script>

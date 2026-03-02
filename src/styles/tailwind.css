@@ -53,8 +53,11 @@
     .btn-loading {
         @apply pointer-events-none;
     }
-    .btn-medium {
+    .btn-large {
         @apply min-h-14 py-2 px-4;
+    }
+    .btn-medium {
+        @apply min-h-12 py-2 px-4;
     }
     .btn-small {
         @apply text-sm h-10 text-xs;
@@ -68,7 +71,7 @@
         @apply h-full w-full px-3 py-2 outline-none transition disabled:cursor-not-allowed;
     }
     .c-input__label {
-        @apply text-sm font-medium text-gray-700 mb-1 block;
+        @apply text-sm font-medium text-gray-700 block;
     }
     .c-input_floating {
         @apply relative w-full;
@@ -83,9 +86,45 @@
         @apply pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-500 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-4 peer-focus:text-xs peer-focus:text-primary peer-not-placeholder-shown:top-4 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-primary;
     }
 
+    /* select classes */
+
+    .c-select {
+        @apply h-14 rounded-lg bg-card text-sm text-gray-900 has-disabled:opacity-60 relative;
+    }
+    .c-select__select {
+        @apply appearance-none cursor-pointer px-3 py-2 pt-5 w-full h-full outline-none;
+        &:disabled {
+            @apply cursor-not-allowed;
+        }
+    }
+    .c-select__label {
+        @apply pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-500 transition-all;
+    }
+    .c-select__select:focus ~ .c-select__label {
+        @apply top-4 text-xs text-primary top-4;
+    }
+    .c-select.is-filled .c-select__label {
+        @apply top-4 text-xs text-primary top-4;
+    }
+    .c-select__arrow {
+        @apply pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 transition-transform duration-200;
+    }
+    .c-select__select:focus ~ .c-select__arrow {
+        @apply rotate-180 text-primary;
+    }
+    .c-select__hint {
+        @apply mt-1 block text-xs text-gray-500 px-1;
+    }
+    .c-select__hint--error {
+        @apply text-red-500;
+    }
+    .c-select:has(.c-select__hint--error) .c-select__select {
+        @apply ring-1 ring-red-500 ring-inset;
+    }
+
     /* textarea classes */
     .c-textarea {
-        @apply w-full h-45 rounded-lg bg-card text-sm text-gray-900 px-3 py-2 outline-none transition disabled:cursor-not-allowed disabled:opacity-60;
+        @apply block w-full h-45 rounded-lg bg-card text-sm text-gray-900 px-3 py-2 outline-none transition disabled:cursor-not-allowed disabled:opacity-60;
         &::placeholder {
             @apply text-gray-700;
         }

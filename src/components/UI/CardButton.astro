@@ -7,8 +7,9 @@ export interface CardButtonProps {
     type: "link" | "button" | "div";
     href?: string;
     icon: AstroComponentFactory;
-    size?: "small" | "medium";
+    size?: "small" | "medium" | "xsmall";
     dataSheetOpen?: string;
+    reverse?: boolean;
 }
 const {
     title,
@@ -17,15 +18,16 @@ const {
     dataSheetOpen,
     icon: Icon,
     size = "medium",
+    reverse = false,
 } = Astro.props as CardButtonProps;
 
 const Tag = type === "link" ? "a" : type === "button" ? "button" : "div";
 
 const sizes = {
-    small: "h-25",
-    medium: "h-30",
+    small: "h-25 p-4",
+    medium: "h-30 p-4",
+    xsmall: "h-25 p-2.5 text-xs",
 };
-
 const actionClasses = {
     link: "hover:bg-primary/10",
     button: "active:bg-primary/10",
@@ -37,12 +39,13 @@ const actionClasses = {
     {...href ? { href: href } : {}}
     {...dataSheetOpen ? { "data-sheet-open": dataSheetOpen } : {}}
     class={clsx(
-        "bg-card w-full rounded-2xl flex flex-col justify-between gap-4 cursor-pointer items-start text-left p-4",
+        "bg-card w-full rounded-2xl flex flex-col justify-between gap-2 cursor-pointer items-start text-left",
         sizes[size],
         actionClasses[type],
+        reverse ? "flex-col-reverse" : "",
     )}
 >
-    <Icon size={24} class="text-primary" />
+    <Icon size={24} stroke-width={1} class="text-primary" />
     <div class="flex justify-between items-end w-full">
         <span class="font-roboto roboto-flex-custom font-semibold">{title}</span
         >
