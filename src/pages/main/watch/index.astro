@@ -13,6 +13,8 @@ import {
     BadgeAlert,
     ChevronRight,
     Download,
+    Plus,
+    ArrowLeft,
 } from "@lucide/astro";
 import NavBar from "@src/components/layouts/NavBar.astro";
 import ScreenBody from "@src/components/layouts/ScreenBody.astro";
@@ -21,6 +23,11 @@ import CardButton from "@src/components/UI/CardButton.astro";
 import Title from "@src/components/UI/Title.astro";
 import Button from "@src/components/UI/Button.astro";
 import ScreenLayout from "@src/layouts/ScreenLayout.astro";
+import PhotoCarusel from "@src/components/UI/PhotoCarusel.astro";
+import RoundButton from "@src/components/UI/RoundButton.astro";
+import MyWatchTransferRightsSheet from "@src/components/sheets/MyWatchTransferRightsSheet.astro";
+import MyWatchServiceOrderSheet from "@src/components/sheets/MyWatchServiceOrderSheet.astro";
+import MyWatchSellWatchSheet from "@src/components/sheets/MyWatchSellWatchSheet.astro";
 
 const watchNav: CardButtonProps[] = [
     {
@@ -28,18 +35,21 @@ const watchNav: CardButtonProps[] = [
         type: "button",
         icon: RedoDot,
         size: "xsmall",
+        dataSheetOpen: "transferRights",
     },
     {
         title: "Записаться на сервис",
         type: "button",
         icon: Settings,
         size: "xsmall",
+        dataSheetOpen: "serviceOrder",
     },
     {
         title: "Продать часы",
         type: "button",
         icon: DollarSign,
         size: "xsmall",
+        dataSheetOpen: "sellWatch",
     },
     {
         title: "Запросить trade-in",
@@ -134,136 +144,166 @@ const lifeCicle = [
 
 <ScreenLayout>
     <ScreenBody hasNavbr>
-        <div>
-            <div class="aspect-square overflow-hidden relative -m-4">
-                <video
-                    class="absolute -bottom-1/2 object-cover"
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    preload="auto"
-                >
-                    <source src="/video/splash.mp4" type="video/mp4" />
-                </video>
-            </div>
-            <div class="-mt-[50vw] z-[1] relative">
-                <img class="mx-auto" src="/img/main/watch-big.png" alt="" />
-            </div>
-            <div class="grid grid-cols-3 gap-2">
-                {
-                    watchNav.map((item) => (
-                        <div>
-                            <CardButton {...item} />
-                        </div>
-                    ))
-                }
-            </div>
-            <div class="border-b border-line -mx-4 px-4 py-5 grid gap-4">
-                <Title as="h4">Характеристики</Title>
-                <div class="grid gap-3 grid-cols-2">
-                    <div class="grid">
-                        <span class="text-medium text-xs">Калибр</span>
-                        K.3432.4233
-                    </div>
-                    <div class="grid">
-                        <span class="text-medium text-xs">Тип</span>
-                        Наручные часы
-                    </div>
-                    <div class="grid">
-                        <span class="text-medium text-xs">Материал корпуса</span
-                        >
-                        Titanium
-                    </div>
-                    <div class="grid">
-                        <span class="text-medium text-xs">Год выпуска</span>
-                        2025
-                    </div>
-                    <div class="grid col-span-2">
-                        <span class="text-medium text-xs">Усложнения</span>
-                        Moonphase, Day of week, Joke indication
-                    </div>
+        <div
+            class="-mx-4 -mt-4 p-4 text-white h-[350px] relative shrink-0 overflow-hidden"
+        >
+            <video
+                class="absolute -bottom-1/2 object-cover left-0 -z-1"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+            >
+                <source src="/video/splash.mp4" type="video/mp4" />
+            </video>
+            <div class="flex justify-between items-baseline">
+                <div class="flex flex-col gap-1 items-start">
+                    <Title as="h1">Joker</Title>
+                    <span class="leading-normal block mb-4">
+                        Ристмоны <br />
+                        KC-042
+                    </span>
+                    <RoundButton variant="transparentDark" href="/main">
+                        <ArrowLeft stroke-width="1" />
+                    </RoundButton>
+                </div>
+                <div>
+                    <span
+                        class="bg-white rounded-full px-2.5 py-1 text-xs text-primary inline-block"
+                    >
+                        В коллекции
+                    </span>
                 </div>
             </div>
-            <div class="border-b border-line -mx-4 px-4 py-5 grid gap-4">
-                <Title as="h4">Гарантия и сервис</Title>
-                <div class="grid gap-2">
-                    <div class="flex items-center gap-4">
-                        до 01.01.2025
-                        <span class="flex items-center gap-1 text-xs">
-                            <BadgeCheck
-                                fill={`var(--color-green-500)`}
-                                class="text-white"
-                            />
-                            Active
-                        </span>
-                        <span class="flex items-center gap-1 text-xs">
-                            <BadgeAlert
-                                fill={`var(--color-red-500)`}
-                                class="text-white"
-                            />
-                            none Active
-                        </span>
+        </div>
+        <div class="-mt-[50vw] z-[1] relative mb-4">
+            <img class="mx-auto" src="/img/main/watch-big.png" alt="" />
+        </div>
+        <div class="grid grid-cols-3 gap-2">
+            {
+                watchNav.map((item) => (
+                    <div>
+                        <CardButton {...item} />
                     </div>
-                    <div class="flex items-baseline gap-2">
-                        <span class="text-medium">Дата начала</span>
-                        01.01.2025
-                    </div>
-                    <div class="flex items-baseline gap-2">
-                        <span class="text-medium">Следующее ТО</span>
-                        2026–2027
-                    </div>
-                    <div class="flex items-baseline gap-2">
-                        <span class="text-medium">Последний сервис</span>
-                        01.01.2025 (Full Service)
-                    </div>
+                ))
+            }
+        </div>
+        <div class="border-b border-line -mx-4 px-4 py-5 grid gap-4">
+            <Title as="h4">Характеристики</Title>
+            <div class="grid gap-3 grid-cols-2">
+                <div class="grid">
+                    <span class="text-medium text-xs">Калибр</span>
+                    K.3432.4233
                 </div>
-                <Button variant="secondary" size="medium"
-                    >Запросить продление гарантии</Button
-                >
+                <div class="grid">
+                    <span class="text-medium text-xs">Тип</span>
+                    Наручные часы
+                </div>
+                <div class="grid">
+                    <span class="text-medium text-xs">Материал корпуса</span>
+                    Titanium
+                </div>
+                <div class="grid">
+                    <span class="text-medium text-xs">Год выпуска</span>
+                    2025
+                </div>
+                <div class="grid col-span-2">
+                    <span class="text-medium text-xs">Усложнения</span>
+                    Moonphase, Day of week, Joke indication
+                </div>
             </div>
-            <div class="border-b border-line -mx-4 px-4 py-5 grid gap-4">
-                <Title as="h4">История жизни</Title>
-                <div class="relative">
-                    <div class="w-[1px] h-full bg-primary left-0 absolute">
-                    </div>
-                    <div class="pl-5 gap-4 grid">
-                        {
-                            lifeCicle.map((item) => (
-                                <button class="flex items-center justify-between gap-4 text-left relative">
-                                    <span class="grid">
-                                        <span class="font-roboto roboto-flex-custom font-semibold text-base">
-                                            {item.title}
-                                        </span>
-                                        <span class="text-xs text-medium">
-                                            {item.date}
-                                        </span>
+        </div>
+        <div class="border-b border-line -mx-4 px-4 py-5 grid gap-4">
+            <Title as="h4">Гарантия и сервис</Title>
+            <div class="grid gap-2">
+                <div class="flex items-center gap-4">
+                    до 01.01.2025
+                    <span class="flex items-center gap-1 text-xs">
+                        <BadgeCheck
+                            fill={`var(--color-green-500)`}
+                            class="text-white"
+                        />
+                        Active
+                    </span>
+                    <span class="flex items-center gap-1 text-xs">
+                        <BadgeAlert
+                            fill={`var(--color-red-500)`}
+                            class="text-white"
+                        />
+                        none Active
+                    </span>
+                </div>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-medium">Дата начала</span>
+                    01.01.2025
+                </div>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-medium">Следующее ТО</span>
+                    2026–2027
+                </div>
+                <div class="flex items-baseline gap-2">
+                    <span class="text-medium">Последний сервис</span>
+                    01.01.2025 (Full Service)
+                </div>
+            </div>
+            <Button variant="secondary" size="medium"
+                >Запросить продление гарантии</Button
+            >
+        </div>
+        <div class="border-b border-line -mx-4 px-4 py-5 grid gap-4">
+            <Title as="h4">История жизни</Title>
+            <div class="relative">
+                <div class="w-[1px] h-full bg-primary left-0 absolute"></div>
+                <div class="pl-5 gap-4 grid">
+                    {
+                        lifeCicle.map((item) => (
+                            <button class="flex items-center justify-between gap-4 text-left relative">
+                                <span class="grid">
+                                    <span class="font-roboto roboto-flex-custom font-semibold text-base">
+                                        {item.title}
                                     </span>
-                                    <ChevronRight
-                                        size={24}
-                                        stroke-width={1}
-                                        class="text-primary"
-                                    />
-                                    <span class="w-2.5 h-2.5 rounded-full bg-primary block absolute -left-5 bottom-1 -translate-x-1/2" />
-                                </button>
-                            ))
-                        }
-                        <Button variant="secondary" size="medium">
-                            Показать ещё 5
-                        </Button>
-                    </div>
+                                    <span class="text-xs text-medium">
+                                        {item.date}
+                                    </span>
+                                </span>
+                                <ChevronRight
+                                    size={24}
+                                    stroke-width={1}
+                                    class="text-primary"
+                                />
+                                <span class="w-2.5 h-2.5 rounded-full bg-primary block absolute -left-5 bottom-1 -translate-x-1/2" />
+                            </button>
+                        ))
+                    }
+                    <Button variant="secondary" size="medium">
+                        Показать ещё 5
+                    </Button>
                 </div>
             </div>
-            <div class="border-b border-line -mx-4 px-4 py-5 grid gap-4">
-                <Title as="h4">Документы и Архив</Title>
-                <div class="grid grid-cols-2 gap-2">
-                    {watchFiles.map((item) => <CardButton {...item} />)}
-                </div>
+        </div>
+        <div class="border-b border-line -mx-4 px-4 py-5 grid gap-4">
+            <Title as="h4">Документы и Архив</Title>
+            <div class="grid grid-cols-2 gap-2">
+                {watchFiles.map((item) => <CardButton {...item} />)}
             </div>
-            <div class="py-5 grid gap-4">
-                <Title as="h4">Фотографии часов</Title>
-            </div>
+        </div>
+        <div class="pt-5 grid gap-4">
+            <Title as="h4">Фотографии часов</Title>
+            <PhotoCarusel
+                src={[
+                    "/img/main/photo.jpg",
+                    "/img/main/photo.jpg",
+                    "/img/main/photo.jpg",
+                    "/img/main/photo.jpg",
+                ]}
+                alt="Фотографии часов"
+            />
+            <Button variant="secondary">Добавить фото</Button>
         </div>
     </ScreenBody>
 </ScreenLayout>
 <NavBar active="my-watches" />
+<MyWatchTransferRightsSheet />
+<MyWatchServiceOrderSheet />
+<MyWatchSellWatchSheet />

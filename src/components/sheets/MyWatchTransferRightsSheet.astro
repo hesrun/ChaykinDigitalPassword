@@ -1,0 +1,45 @@
+---
+import { Mail, MessagesSquare, PhoneCall } from "@lucide/astro";
+import BottomSheet from "../layouts/bottomSheet/BottomSheet.astro";
+import SheetContainer from "../layouts/bottomSheet/SheetContainer.astro";
+import SheetHeader from "../layouts/bottomSheet/SheetHeader.astro";
+import Button from "../UI/Button.astro";
+import Title from "../UI/Title.astro";
+import Textarea from "../UI/Textarea.astro";
+import Select from "../UI/Select.astro";
+import Input from "../UI/Input.astro";
+---
+
+<BottomSheet id="transferRights">
+    <SheetContainer>
+        <SheetHeader>
+            <Title>Передать права</Title>
+        </SheetHeader>
+        <div class="grid gap-2">
+            <Input
+                type="email"
+                variant="floating"
+                id="recipient"
+                name="recipient"
+                label="Email нового владельца"
+                placeholder="Email нового владельца"
+            />
+            <Select
+                id="typeRights"
+                name="typeRights"
+                label="Тип передачи"
+                options={[
+                    { value: "gift", label: "Подарок" },
+                    { value: "service", label: "Через официальный сервис" },
+                    { value: "in_person", label: "Передать лично при встрече" },
+                ]}
+            />
+            <Textarea
+                placeholder="Цифровая гравировка (возможность оставить одно скрытое сообщение следующему владельцу)"
+                name="engraving"
+                id="engraving"
+            />
+            <Button variant="primary">Отправить запрос</Button>
+        </div>
+    </SheetContainer>
+</BottomSheet>

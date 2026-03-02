@@ -1,0 +1,37 @@
+---
+import BottomSheet from "../layouts/bottomSheet/BottomSheet.astro";
+import SheetContainer from "../layouts/bottomSheet/SheetContainer.astro";
+import SheetHeader from "../layouts/bottomSheet/SheetHeader.astro";
+import Button from "../UI/Button.astro";
+import Title from "../UI/Title.astro";
+import Select from "../UI/Select.astro";
+import Input from "../UI/Input.astro";
+---
+
+<BottomSheet id="sellWatch">
+    <SheetContainer>
+        <SheetHeader>
+            <Title>Продать через Certified Pre-Owned</Title>
+        </SheetHeader>
+        <div class="grid gap-2">
+            <Input
+                type="text"
+                variant="floating"
+                id="desiredPrice"
+                name="desiredPrice"
+                label="Желаемая цена"
+                placeholder="Желаемая цена"
+            />
+            <Select
+                id="urgency"
+                name="urgency"
+                label="Срочность"
+                options={[
+                    { value: "asap", label: "Как можно скорее" },
+                    { value: "wait", label: "Подожду" },
+                ]}
+            />
+            <Button variant="primary">Отправить заявку</Button>
+        </div>
+    </SheetContainer>
+</BottomSheet>

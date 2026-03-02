@@ -10,8 +10,18 @@ import NavBar from "@components/layouts/NavBar.astro";
 <ScreenLayout>
     <ScreenBody hasNavbr>
         <div
-            class="bg-[url('/src/assets/Splash.jpg')] bg-cover bg-center -mx-4 -mt-4 p-4 text-white h-[50vh] flex flex-col"
+            class="-mx-4 -mt-4 p-4 text-white h-[350px] flex flex-col relative shrink-0 overflow-hidden"
         >
+            <video
+                class="absolute -bottom-1/2 object-cover left-0 -z-1"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+            >
+                <source src="/video/splash.mp4" type="video/mp4" />
+            </video>
             <div class="flex items-center gap-4">
                 <div
                     class="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center shrink-0"
