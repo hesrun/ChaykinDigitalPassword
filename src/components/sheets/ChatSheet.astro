@@ -1,0 +1,114 @@
+---
+import { Paperclip, SendHorizontal } from "@lucide/astro";
+import BottomSheet from "../layouts/bottomSheet/BottomSheet.astro";
+import SheetContainer from "../layouts/bottomSheet/SheetContainer.astro";
+import Title from "../UI/Title.astro";
+---
+
+<BottomSheet id="chatSheet">
+    <SheetContainer>
+        <div class="flex items-center gap-3 mb-4">
+            <div class="bg-black flex w-15 h-15 rounded-full relative">
+                <div
+                    class="w-4 h-4 bg-green-500 rounded-full absolute top-0 right-0 border-2 border-white"
+                >
+                </div>
+                <svg
+                    class="m-auto"
+                    width="41"
+                    height="23"
+                    viewBox="0 0 98 54"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M33.6875 51L30.625 54H67.375L64.3125 51L61.25 48H49L0 0L49 36L98 0L49 48H36.75L33.6875 51Z"
+                        fill="white"></path>
+                </svg>
+            </div>
+            <div>
+                <Title as="h5">Консьерж</Title>
+                <span class="text-medium">Поддержка 24 / 7</span>
+            </div>
+        </div>
+        <div
+            class="flex flex-col gap-4 max-h-[calc(100vh-16rem)] overflow-y-auto"
+        >
+            <div class="text-medium text-center">30 december 2023</div>
+            <div class="bg-card rounded-2xl max-w-10/12">
+                <div class="p-4">
+                    <p>
+                        Индивидуальный визит в Москву. Встреча с ведущими
+                        мастерами. Демонстрация процесса финишной отделки
+                    </p>
+                    <div class="block mt-2 text-xs opacity-50">10:30</div>
+                </div>
+            </div>
+            <div class="bg-primary rounded-2xl text-white max-w-10/12 ml-auto">
+                <div class="p-4">
+                    <p>
+                        Индивидуальный визит в Москву. Встреча с ведущими
+                        мастерами. Демонстрация процесса финишной отделки
+                    </p>
+                    <div class="block mt-2 text-xs opacity-50 text-right">
+                        10:30
+                    </div>
+                </div>
+            </div>
+            <div class="text-medium text-center">30 december 2023</div>
+            <div class="bg-card rounded-2xl max-w-10/12">
+                <div class="p-4">
+                    <p>
+                        Индивидуальный визит в Москву. Встреча с ведущими
+                        мастерами. Демонстрация процесса финишной отделки
+                    </p>
+                    <div class="block mt-2 text-xs opacity-50">10:30</div>
+                </div>
+            </div>
+            <div class="bg-primary rounded-2xl text-white max-w-10/12 ml-auto">
+                <div class="rounded-2xl overflow-hidden">
+                    <img src="/img/studio/service/service-banner.jpg" alt="" />
+                </div>
+            </div>
+            <div class="bg-primary rounded-2xl text-white max-w-10/12 ml-auto">
+                <div class="p-4">
+                    <p>
+                        Индивидуальный визит в Москву. Встреча с ведущими
+                        мастерами. Демонстрация процесса финишной отделки
+                    </p>
+                    <div class="block mt-2 text-xs opacity-50 text-right">
+                        10:30
+                    </div>
+                </div>
+            </div>
+            <div class="bg-primary rounded-2xl text-white max-w-10/12 ml-auto">
+                <div class="p-4">
+                    <p>
+                        Индивидуальный визит в Москву. Встреча с ведущими
+                        мастерами. Демонстрация процесса финишной отделки
+                    </p>
+                    <div class="block mt-2 text-xs opacity-50 text-right">
+                        10:30
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex items-center px-2 bg-card rounded-2xl mt-4">
+            <button class="text-medium active:text-primary p-2">
+                <Paperclip size={24} stroke-width={1} />
+            </button>
+            <input
+                type="text"
+                name=""
+                id=""
+                placeholder="Текст сообщения"
+                class="h-14 bg-transparent flex-1 outline-none"
+            />
+            <button class="text-primary active:text-primary/80 p-2">
+                <SendHorizontal size={24} stroke-width={1} />
+            </button>
+        </div>
+    </SheetContainer>
+</BottomSheet>

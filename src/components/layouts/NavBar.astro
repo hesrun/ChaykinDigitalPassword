@@ -1,4 +1,6 @@
 ---
+import ChatSheet from "../sheets/ChatSheet.astro";
+
 interface Props {
     active?: "my-watches" | "access-hub" | "studio" | "settings" | "chat";
 }
@@ -87,6 +89,7 @@ const { active } = Astro.props;
         <a
             href=""
             class={`flex flex-col items-center justify-center gap-1 py-2 flex-1 rounded-full active:bg-primary/5 transition-colors ${active === "chat" ? "bg-white text-primary" : "text-gray-500"}`}
+            data-sheet-open="chatSheet"
         >
             <svg
                 width="24"
@@ -106,3 +109,4 @@ const { active } = Astro.props;
         </a>
     </div>
 </div>
+<ChatSheet />
