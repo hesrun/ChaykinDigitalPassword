@@ -11,7 +11,7 @@ import ScreenLayout from "@src/layouts/ScreenLayout.astro";
 <ScreenLayout>
     <ScreenBody hasNavbr>
         <Banner bg="/img/hub/banner-1.jpg" size="medium" blackLink="/hub" />
-        <div class="mt-4 grid gap-4">
+        <div class="mt-4 grid gap-6">
             <div class="grid gap-2.5">
                 <Title as="h2">Ежегодная встреча владельцев</Title>
                 <p class="text-medium">
@@ -32,10 +32,13 @@ import ScreenLayout from "@src/layouts/ScreenLayout.astro";
                     <span class="text-medium text-xs">Локация</span>
                     Москва, Реутовская мануфактура
                 </div>
+                <div class="col-span-2">
+                    <Button variant="outline" size="small"
+                        >Открыть в картах</Button
+                    >
+                </div>
             </div>
-            <div>
-                <Button variant="outline" size="small">Открыть в картах</Button>
-            </div>
+
             <div class="bg-card rounded-2xl p-4 grid gap-4">
                 <Title as="h4">Вы приглашены</Title>
                 <div class="grid gap-2">

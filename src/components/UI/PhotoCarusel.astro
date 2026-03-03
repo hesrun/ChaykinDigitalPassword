@@ -1,19 +1,34 @@
 ---
+import clsx from "clsx";
 interface Props {
     src: string[];
     alt: string;
     class?: string;
+    size?: "small" | "medium";
+    edge?: boolean;
 }
-const { src, alt, class: className } = Astro.props as Props;
+const {
+    src,
+    alt,
+    class: className,
+    size = "medium",
+    edge = false,
+} = Astro.props as Props;
+const sizeClass = {
+    small: "h-22",
+    medium: "h-35",
+};
 ---
 
-<div class={`flex gap-2 overflow-x-auto -mx-4 px-4 ${className}`}>
+<div
+    class={`flex gap-2 overflow-x-auto ${edge ? "-mx-4 px-4" : ""} ${className}`}
+>
     {
         src.map((item) => (
             <img
                 src={item}
                 alt={alt}
-                class="w-full aspect-square object-cover rounded-2xl"
+                class={`w-full aspect-square object-cover rounded-2xl ${sizeClass[size]}`}
             />
         ))
     }

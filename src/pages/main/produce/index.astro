@@ -1,0 +1,193 @@
+---
+import {
+    RefreshCcwDot,
+    Settings,
+    DollarSign,
+    RedoDot,
+    TriangleAlert,
+    FileText,
+    Box,
+    Watch,
+    Clock,
+    BadgeCheck,
+    BadgeAlert,
+    ChevronRight,
+    Download,
+    Plus,
+    ArrowLeft,
+    icons,
+    ChevronsRight,
+    Hourglass,
+    ArrowBigRight,
+    MessageCircle,
+} from "@lucide/astro";
+import NavBar from "@src/components/layouts/NavBar.astro";
+import ScreenBody from "@src/components/layouts/ScreenBody.astro";
+import type { CardButtonProps } from "@src/components/UI/CardButton.astro";
+import CardButton from "@src/components/UI/CardButton.astro";
+import Title from "@src/components/UI/Title.astro";
+import ScreenLayout from "@src/layouts/ScreenLayout.astro";
+import PhotoCarusel from "@src/components/UI/PhotoCarusel.astro";
+import RoundButton from "@src/components/UI/RoundButton.astro";
+
+const watchFiles: CardButtonProps[] = [
+    {
+        title: "Скачать договор",
+        type: "button",
+        icon: Download,
+    },
+    {
+        title: "Связаться с менеджером",
+        type: "button",
+        icon: MessageCircle,
+    },
+];
+
+const prduceSteps = [
+    {
+        title: "Заказ принят",
+        date: "Заказ подтвержден. Аллокация номера зафиксирована. Номер KC-088 закреплен за вами",
+        icon: BadgeCheck,
+        state: "past",
+    },
+    {
+        title: "Комплектация",
+        date: "Подбор материалов корпуса и заготовок механизма. Планирование слота в графике мастеров",
+        icon: BadgeCheck,
+        state: "past",
+        images: [
+            "/img/main/photo.jpg",
+            "/img/main/photo.jpg",
+            "/img/main/photo.jpg",
+            "/img/main/photo.jpg",
+        ],
+    },
+    {
+        title: "Сборка механизма",
+        date: "Установка камней, колесной системы и анкерного спуска. Первое биение сердца часов",
+        icon: ArrowBigRight,
+        state: "active",
+    },
+    {
+        title: "Обработка и декорирование",
+        date: "Изготовление платины и мостов. Нанесение узоров (женевские волны, перлаж)",
+        icon: Hourglass,
+        state: "whait",
+    },
+
+    {
+        title: "Установка в корпус",
+        date: "Изготовление платины и мостов. Нанесение узоров (женевские волны, перлаж)",
+        icon: Hourglass,
+        state: "whait",
+    },
+    {
+        title: "Готовность к передаче",
+        date: "Часы упакованы. Цифровой паспорт создан. Ожидание доставки или вручения",
+        icon: Hourglass,
+        state: "whait",
+    },
+];
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <div
+            class="-mx-4 -mt-4 p-4 text-white h-[350px] relative shrink-0 overflow-hidden"
+        >
+            <video
+                class="absolute -bottom-1/2 object-cover left-0 -z-1"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+            >
+                <source src="/video/splash.mp4" type="video/mp4" />
+            </video>
+            <div class="flex justify-between items-baseline">
+                <div class="flex flex-col gap-1 items-start">
+                    <Title as="h1">Joker</Title>
+                    <span class="leading-normal block mb-4">
+                        Ристмоны <br />
+                        KC-042
+                    </span>
+                    <RoundButton variant="transparentDark" href="/main">
+                        <ArrowLeft stroke-width="1" />
+                    </RoundButton>
+                </div>
+                <div>
+                    <span
+                        class="bg-white rounded-full px-2.5 py-1 text-xs text-primary inline-block"
+                    >
+                        В производстве
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="-mt-[50vw] z-[1] relative mb-4">
+            <img class="mx-auto" src="/img/main/watch-big.png" alt="" />
+        </div>
+        <div class="grid gap-8">
+            <div class="grid gap-2">
+                <div class="flex items-center justify-between">
+                    <Title as="h6">Выполнено 68%</Title>
+                    <span>Этап 3 из 7</span>
+                </div>
+                <div class="h-1.25 bg-card rounded-full overflow-hidden">
+                    <div
+                        class="h-1.25 bg-primary rounded-full"
+                        style="width: 68%;"
+                    >
+                    </div>
+                </div>
+                <p>Ожидаемая готовность: Осень 2026</p>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                {watchFiles.map((item) => <CardButton {...item} />)}
+            </div>
+            <div class="grid gap-4">
+                <Title as="h4">Этапы производства</Title>
+                <div>
+                    {
+                        prduceSteps.map((item) => (
+                            <div class="flex items-start gap-4 relative not-last:pb-6 group">
+                                <div class="flex flex-col items-center relative z-1">
+                                    <div
+                                        class={`w-11 h-11 rounded-full flex items-center justify-center ${
+                                            item.state === "active" ||
+                                            item.state === "past"
+                                                ? "bg-primary text-white"
+                                                : item.state === "whait"
+                                                  ? "bg-card text-neutral-400"
+                                                  : "bg-gray-500/20"
+                                        }`}
+                                    >
+                                        <item.icon size={24} stroke-width={2} />
+                                    </div>
+                                </div>
+                                <div class="grid gap-2">
+                                    <Title as="h6">{item.title}</Title>
+                                    <p class="text-sm text-medium">
+                                        {item.date}
+                                    </p>
+                                    {item.images && (
+                                        <PhotoCarusel
+                                            size="small"
+                                            src={item.images}
+                                            alt={item.title}
+                                        />
+                                    )}
+                                </div>
+                                <div
+                                    class={`w-px group-last:hidden absolute top-0 bottom-0 left-5.5 transform -translate-x-1/2 ${item.state === "past" ? "bg-primary" : "bg-neutral-300"}`}
+                                />
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </ScreenBody>
+    <NavBar active="my-watches" />
+</ScreenLayout>

@@ -1,5 +1,11 @@
 ---
-import { BadgeCheck, CalendarPlus, Clock } from "@lucide/astro";
+import {
+    BadgeCheck,
+    CalendarPlus,
+    CircleArrowOutUpRight,
+    Clock,
+    MoveUpRight,
+} from "@lucide/astro";
 import NavBar from "@src/components/layouts/NavBar.astro";
 import ScreenBody from "@src/components/layouts/ScreenBody.astro";
 import Banner from "@src/components/UI/Banner.astro";
@@ -11,7 +17,7 @@ import ScreenLayout from "@src/layouts/ScreenLayout.astro";
 <ScreenLayout>
     <ScreenBody hasNavbr>
         <Banner bg="/img/hub/banner-2.jpg" size="medium" blackLink="/hub" />
-        <div class="mt-4 grid gap-4">
+        <div class="mt-4 grid gap-6">
             <div class="grid gap-2.5">
                 <Title as="h2">Ристмон «Stargazer»</Title>
                 <p>Лимитированная серия, 12 экземпляров</p>
@@ -20,7 +26,16 @@ import ScreenLayout from "@src/layouts/ScreenLayout.astro";
                     астрономического времени Марса. Корпус из булатной стали.
                 </p>
             </div>
-
+            <div class="flex items-center justify-between">
+                <div class="grid gap-1">
+                    <span class="text-medium">Цена</span>
+                    <Title as="h6">34,000 CHF</Title>
+                </div>
+                <a href="#" class="text-primary flex items-center gap-2">
+                    Подробнее о модели
+                    <MoveUpRight stroke-width={1} />
+                </a>
+            </div>
             <div class="bg-card rounded-2xl p-4 grid gap-4">
                 <Title as="h4">Доступен предзаказ</Title>
                 <div class="flex gap-2.5 items-center">

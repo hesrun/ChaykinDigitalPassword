@@ -59,33 +59,42 @@ import NavBar from "@components/layouts/NavBar.astro";
             </div>
         </div>
         <div class="-mx-4">
-            {
-                Array(5)
-                    .fill(0)
-                    .map(() => (
-                        <a
-                            href="/main/watch"
-                            class="flex not-last:border-b border-line p-4 gap-4 items-center active:bg-primary/5 transition-colors"
-                        >
-                            <img
-                                class="w-[120px]"
-                                src="/img/main/watch.png"
-                                alt=""
-                            />
-                            <div class="flex-1 flex flex-col gap-1.5">
-                                <Title as="h4">Joker</Title>
-                                <span>KC-042</span>
-                                <div class="border border-line w-max mt-2 px-2 py-1 text-sm rounded-full text-xs">
-                                    В коллекции
-                                </div>
-                            </div>
-                            <ChevronRight
-                                stroke-width="1"
-                                class="text-primary"
-                            />
-                        </a>
-                    ))
-            }
+            <a
+                href="/main/watch"
+                class="flex not-last:border-b border-line p-4 gap-4 items-center active:bg-primary/5 transition-colors"
+            >
+                <img class="w-[120px]" src="/img/main/watch.png" alt="" />
+                <div class="flex-1 flex flex-col gap-1.5">
+                    <Title as="h4">Joker</Title>
+                    <span>KC-042</span>
+                    <div
+                        class="border border-line w-max mt-2 px-2 py-1 text-sm rounded-full text-xs"
+                    >
+                        В коллекции
+                    </div>
+                </div>
+                <ChevronRight stroke-width="1" class="text-primary" />
+            </a>
+            <a
+                href="/main/produce"
+                class="flex not-last:border-b border-line p-4 gap-4 items-center active:bg-primary/5 transition-colors"
+            >
+                <img
+                    class="w-[120px] opacity-50"
+                    src="/img/main/watch.png"
+                    alt=""
+                />
+                <div class="flex-1 flex flex-col gap-1.5">
+                    <Title as="h4">Joker</Title>
+                    <span>KC-042</span>
+                    <div
+                        class="border border-line w-max mt-2 px-2 py-1 text-sm rounded-full text-xs"
+                    >
+                        В процессе производства
+                    </div>
+                </div>
+                <ChevronRight stroke-width="1" class="text-primary" />
+            </a>
         </div>
     </ScreenBody>
 </ScreenLayout>

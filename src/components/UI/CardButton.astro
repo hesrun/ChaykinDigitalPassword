@@ -7,7 +7,7 @@ export interface CardButtonProps {
     type: "link" | "button" | "div";
     href?: string;
     icon: AstroComponentFactory;
-    size?: "small" | "medium" | "xsmall";
+    size?: "small" | "medium";
     dataSheetOpen?: string;
     reverse?: boolean;
 }
@@ -24,9 +24,8 @@ const {
 const Tag = type === "link" ? "a" : type === "button" ? "button" : "div";
 
 const sizes = {
-    small: "h-25 p-4",
-    medium: "h-30 p-4",
-    xsmall: "h-25 p-2.5 text-xs",
+    medium: "h-28 p-4",
+    small: "h-25 p-2.5 text-xs",
 };
 const actionClasses = {
     link: "hover:bg-primary/10",

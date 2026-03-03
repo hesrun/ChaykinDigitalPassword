@@ -1,0 +1,35 @@
+---
+import BottomSheet from "../layouts/bottomSheet/BottomSheet.astro";
+import SheetContainer from "../layouts/bottomSheet/SheetContainer.astro";
+import SheetHeader from "../layouts/bottomSheet/SheetHeader.astro";
+import Button from "../UI/Button.astro";
+import Title from "../UI/Title.astro";
+import Select from "../UI/Select.astro";
+import Textarea from "../UI/Textarea.astro";
+---
+
+<BottomSheet id="tradeInWatch">
+    <SheetContainer>
+        <SheetHeader>
+            <Title>Запрос на Trade-In</Title>
+        </SheetHeader>
+        <div class="grid gap-2">
+            <Select
+                id="model"
+                name="model"
+                label="Какая модель интересует"
+                options={[
+                    { value: "kolobo", label: "Колобок" },
+                    { value: "restimones", label: "Рестимоны" },
+                    { value: "joker", label: "Джокер" },
+                ]}
+            />
+            <Textarea
+                placeholder="Текст комментария"
+                name="comment"
+                id="comment"
+            />
+            <Button variant="primary">Отправить</Button>
+        </div>
+    </SheetContainer>
+</BottomSheet>

@@ -28,64 +28,71 @@ import RoundButton from "@src/components/UI/RoundButton.astro";
 import MyWatchTransferRightsSheet from "@src/components/sheets/MyWatchTransferRightsSheet.astro";
 import MyWatchServiceOrderSheet from "@src/components/sheets/MyWatchServiceOrderSheet.astro";
 import MyWatchSellWatchSheet from "@src/components/sheets/MyWatchSellWatchSheet.astro";
+import MyWatchProblemWatchSheet from "@src/components/sheets/MyWatchProblemWatchSheet.astro";
+import MyWatchTradeInSheet from "@src/components/sheets/MyWatchTradeInSheet.astro";
+import MyWatchServiceWatchSheet from "@src/components/sheets/MyWatchServiceWatchSheet.astro";
 
 const watchNav: CardButtonProps[] = [
     {
         title: "Передать права",
         type: "button",
         icon: RedoDot,
-        size: "xsmall",
+        size: "small",
         dataSheetOpen: "transferRights",
     },
     {
         title: "Записаться на сервис",
         type: "button",
         icon: Settings,
-        size: "xsmall",
+        size: "small",
         dataSheetOpen: "serviceOrder",
     },
     {
         title: "Продать часы",
         type: "button",
         icon: DollarSign,
-        size: "xsmall",
+        size: "small",
         dataSheetOpen: "sellWatch",
     },
     {
         title: "Запросить trade-in",
         type: "button",
         icon: RefreshCcwDot,
-        size: "xsmall",
+        size: "small",
+        dataSheetOpen: "tradeInWatch",
     },
     {
         title: "Сообщить о проблеме",
         type: "button",
         icon: TriangleAlert,
-        size: "xsmall",
+        size: "small",
+        dataSheetOpen: "problemWatch",
     },
     {
         title: "Заказать паспорт",
         type: "button",
         icon: FileText,
-        size: "xsmall",
+        size: "small",
     },
     {
         title: "Восста-новить комплект",
         type: "button",
         icon: Box,
-        size: "xsmall",
+        size: "small",
+        href: "/studio/equipment",
     },
     {
         title: "Новый ремешок",
         type: "button",
         icon: Watch,
-        size: "xsmall",
+        size: "small",
+        href: "/studio/straps",
     },
     {
         title: "Продлить гарантию",
         type: "button",
         icon: Clock,
-        size: "xsmall",
+        size: "small",
     },
 ];
 
@@ -94,15 +101,11 @@ const watchFiles: CardButtonProps[] = [
         title: "Цифровой паспорт часов",
         type: "button",
         icon: Download,
-        size: "small",
-        reverse: true,
     },
     {
         title: "User Manual",
         type: "button",
         icon: Download,
-        size: "small",
-        reverse: true,
     },
 ];
 
@@ -110,34 +113,42 @@ const lifeCicle = [
     {
         title: "Currently in your collection",
         date: "01.01.2025",
+        dataSheetOpen: "serviceWatch",
     },
     {
         title: "Сервис выполнен",
         date: "01.01.2025",
+        dataSheetOpen: "serviceWatch",
     },
     {
         title: "Смена владельца",
         date: "01.01.2025",
+        dataSheetOpen: "serviceWatch",
     },
     {
         title: "Первая продажа",
         date: "01.01.2025",
+        dataSheetOpen: "serviceWatch",
     },
     {
         title: "Вторая продажа",
         date: "01.06.2025",
+        dataSheetOpen: "serviceWatch",
     },
     {
         title: "Вторая продажа",
         date: "31.01.2025",
+        dataSheetOpen: "serviceWatch",
     },
     {
         title: "Вторая продажа",
         date: "31.01.2025",
+        dataSheetOpen: "serviceWatch",
     },
     {
         title: "Вторая продажа",
         date: "31.01.2025",
+        dataSheetOpen: "serviceWatch",
     },
 ];
 ---
@@ -180,130 +191,141 @@ const lifeCicle = [
         <div class="-mt-[50vw] z-[1] relative mb-4">
             <img class="mx-auto" src="/img/main/watch-big.png" alt="" />
         </div>
-        <div class="grid grid-cols-3 gap-2">
-            {
-                watchNav.map((item) => (
-                    <div>
-                        <CardButton {...item} />
+        <div class="grid gap-8">
+            <div class="grid grid-cols-3 gap-2">
+                {
+                    watchNav.map((item) => (
+                        <div>
+                            <CardButton {...item} />
+                        </div>
+                    ))
+                }
+            </div>
+            <div class="grid gap-4">
+                <Title as="h4">Характеристики</Title>
+                <div class="grid gap-3 grid-cols-2">
+                    <div class="grid">
+                        <span class="text-medium text-xs">Калибр</span>
+                        K.3432.4233
                     </div>
-                ))
-            }
-        </div>
-        <div class="border-b border-line -mx-4 px-4 py-5 grid gap-4">
-            <Title as="h4">Характеристики</Title>
-            <div class="grid gap-3 grid-cols-2">
-                <div class="grid">
-                    <span class="text-medium text-xs">Калибр</span>
-                    K.3432.4233
-                </div>
-                <div class="grid">
-                    <span class="text-medium text-xs">Тип</span>
-                    Наручные часы
-                </div>
-                <div class="grid">
-                    <span class="text-medium text-xs">Материал корпуса</span>
-                    Titanium
-                </div>
-                <div class="grid">
-                    <span class="text-medium text-xs">Год выпуска</span>
-                    2025
-                </div>
-                <div class="grid col-span-2">
-                    <span class="text-medium text-xs">Усложнения</span>
-                    Moonphase, Day of week, Joke indication
+                    <div class="grid">
+                        <span class="text-medium text-xs">Тип</span>
+                        Наручные часы
+                    </div>
+                    <div class="grid">
+                        <span class="text-medium text-xs">Материал корпуса</span
+                        >
+                        Titanium
+                    </div>
+                    <div class="grid">
+                        <span class="text-medium text-xs">Год выпуска</span>
+                        2025
+                    </div>
+                    <div class="grid col-span-2">
+                        <span class="text-medium text-xs">Усложнения</span>
+                        Moonphase, Day of week, Joke indication
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="border-b border-line -mx-4 px-4 py-5 grid gap-4">
-            <Title as="h4">Гарантия и сервис</Title>
-            <div class="grid gap-2">
-                <div class="flex items-center gap-4">
-                    до 01.01.2025
-                    <span class="flex items-center gap-1 text-xs">
-                        <BadgeCheck
-                            fill={`var(--color-green-500)`}
-                            class="text-white"
-                        />
-                        Active
-                    </span>
-                    <span class="flex items-center gap-1 text-xs">
-                        <BadgeAlert
-                            fill={`var(--color-red-500)`}
-                            class="text-white"
-                        />
-                        none Active
-                    </span>
+            <div class="grid gap-4">
+                <Title as="h4">Гарантия и сервис</Title>
+                <div class="grid gap-2">
+                    <div class="flex items-center gap-4">
+                        до 01.01.2025
+                        <span class="flex items-center gap-1 text-xs">
+                            <BadgeCheck
+                                fill={`var(--color-green-500)`}
+                                class="text-white"
+                            />
+                            Active
+                        </span>
+                        <span class="flex items-center gap-1 text-xs">
+                            <BadgeAlert
+                                fill={`var(--color-red-500)`}
+                                class="text-white"
+                            />
+                            none Active
+                        </span>
+                    </div>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-medium">Дата начала</span>
+                        01.01.2025
+                    </div>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-medium">Следующее ТО</span>
+                        2026–2027
+                    </div>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-medium">Последний сервис</span>
+                        01.01.2025 (Full Service)
+                    </div>
                 </div>
-                <div class="flex items-baseline gap-2">
-                    <span class="text-medium">Дата начала</span>
-                    01.01.2025
-                </div>
-                <div class="flex items-baseline gap-2">
-                    <span class="text-medium">Следующее ТО</span>
-                    2026–2027
-                </div>
-                <div class="flex items-baseline gap-2">
-                    <span class="text-medium">Последний сервис</span>
-                    01.01.2025 (Full Service)
-                </div>
+                <Button variant="secondary" size="medium"
+                    >Запросить продление гарантии</Button
+                >
             </div>
-            <Button variant="secondary" size="medium"
-                >Запросить продление гарантии</Button
-            >
-        </div>
-        <div class="border-b border-line -mx-4 px-4 py-5 grid gap-4">
-            <Title as="h4">История жизни</Title>
-            <div class="relative">
-                <div class="w-[1px] h-full bg-primary left-0 absolute"></div>
-                <div class="pl-5 gap-4 grid">
-                    {
-                        lifeCicle.map((item) => (
-                            <button class="flex items-center justify-between gap-4 text-left relative">
-                                <span class="grid">
-                                    <span class="font-roboto roboto-flex-custom font-semibold text-base">
-                                        {item.title}
+            <div class="grid gap-4">
+                <Title as="h4">История жизни</Title>
+                <div class="relative">
+                    <div class="w-[1px] h-full bg-primary left-0 absolute">
+                    </div>
+                    <div class="pl-5 gap-4 grid">
+                        {
+                            lifeCicle.map((item) => (
+                                <button
+                                    class="flex items-center justify-between gap-4 text-left relative active:text-primary"
+                                    data-sheet-open={item.dataSheetOpen}
+                                >
+                                    <span class="grid">
+                                        <span class="font-roboto roboto-flex-custom font-semibold text-base">
+                                            {item.title}
+                                        </span>
+                                        <span class="text-xs text-medium">
+                                            {item.date}
+                                        </span>
                                     </span>
-                                    <span class="text-xs text-medium">
-                                        {item.date}
-                                    </span>
-                                </span>
-                                <ChevronRight
-                                    size={24}
-                                    stroke-width={1}
-                                    class="text-primary"
-                                />
-                                <span class="w-2.5 h-2.5 rounded-full bg-primary block absolute -left-5 bottom-1 -translate-x-1/2" />
-                            </button>
-                        ))
-                    }
-                    <Button variant="secondary" size="medium">
-                        Показать ещё 5
-                    </Button>
+                                    <ChevronRight
+                                        size={24}
+                                        stroke-width={1}
+                                        class="text-primary"
+                                    />
+                                    <span class="w-2.5 h-2.5 rounded-full bg-primary block absolute -left-5 bottom-1 -translate-x-1/2" />
+                                </button>
+                            ))
+                        }
+                        <Button variant="secondary" size="medium">
+                            Показать ещё 5
+                        </Button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="border-b border-line -mx-4 px-4 py-5 grid gap-4">
-            <Title as="h4">Документы и Архив</Title>
-            <div class="grid grid-cols-2 gap-2">
-                {watchFiles.map((item) => <CardButton {...item} />)}
+            <div class="grid gap-4">
+                <Title as="h4">Документы и Архив</Title>
+                <div class="grid grid-cols-2 gap-2">
+                    {watchFiles.map((item) => <CardButton {...item} />)}
+                </div>
             </div>
-        </div>
-        <div class="pt-5 grid gap-4">
-            <Title as="h4">Фотографии часов</Title>
-            <PhotoCarusel
-                src={[
-                    "/img/main/photo.jpg",
-                    "/img/main/photo.jpg",
-                    "/img/main/photo.jpg",
-                    "/img/main/photo.jpg",
-                ]}
-                alt="Фотографии часов"
-            />
-            <Button variant="secondary">Добавить фото</Button>
+            <div class="grid gap-4">
+                <Title as="h4">Фотографии часов</Title>
+                <PhotoCarusel
+                    src={[
+                        "/img/main/photo.jpg",
+                        "/img/main/photo.jpg",
+                        "/img/main/photo.jpg",
+                        "/img/main/photo.jpg",
+                    ]}
+                    alt="Фотографии часов"
+                />
+                <Button variant="secondary">Добавить фото</Button>
+            </div>
         </div>
     </ScreenBody>
 </ScreenLayout>
 <NavBar active="my-watches" />
+
 <MyWatchTransferRightsSheet />
 <MyWatchServiceOrderSheet />
 <MyWatchSellWatchSheet />
+<MyWatchProblemWatchSheet />
+<MyWatchTradeInSheet />
+<MyWatchServiceWatchSheet />

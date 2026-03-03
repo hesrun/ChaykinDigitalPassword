@@ -1,0 +1,37 @@
+---
+import BottomSheet from "../layouts/bottomSheet/BottomSheet.astro";
+import SheetContainer from "../layouts/bottomSheet/SheetContainer.astro";
+import SheetHeader from "../layouts/bottomSheet/SheetHeader.astro";
+import Button from "../UI/Button.astro";
+import Title from "../UI/Title.astro";
+import PhotoCarusel from "../UI/PhotoCarusel.astro";
+---
+
+<BottomSheet id="serviceWatch">
+    <SheetContainer>
+        <SheetHeader>
+            <Title>Сервис выполнен</Title>
+        </SheetHeader>
+        <div class="grid gap-4">
+            <div class="flex gap-2">
+                <span>01.01.2025</span>
+                <span>Москва</span>
+            </div>
+            <p>
+                Описание события мануфактура открыта для владельцев часов по
+                предварительной договоренности. Мы покажем вам, как создаются
+                ваши часы.
+            </p>
+            <PhotoCarusel
+                src={[
+                    "/img/main/photo.jpg",
+                    "/img/main/photo.jpg",
+                    "/img/main/photo.jpg",
+                    "/img/main/photo.jpg",
+                ]}
+                alt="Фотографии часов"
+            />
+            <Button variant="primary">Отправить</Button>
+        </div>
+    </SheetContainer>
+</BottomSheet>
