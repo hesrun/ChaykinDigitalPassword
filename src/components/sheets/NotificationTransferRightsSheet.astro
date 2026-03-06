@@ -1,0 +1,36 @@
+---
+import { Mail, MessagesSquare, PhoneCall } from "@lucide/astro";
+import BottomSheet from "../layouts/bottomSheet/BottomSheet.astro";
+import SheetContainer from "../layouts/bottomSheet/SheetContainer.astro";
+import SheetHeader from "../layouts/bottomSheet/SheetHeader.astro";
+import Button from "../UI/Button.astro";
+import Title from "../UI/Title.astro";
+---
+
+<BottomSheet id="transferRightsNotification">
+    <SheetContainer>
+        <SheetHeader>
+            <Title>Передача прав собственности</Title>
+        </SheetHeader>
+        <div class="grid gap-4">
+            <p>
+                Иван И. инициировал передачу прав на часы Joker (KC-042).
+                Подтвердите получение.
+            </p>
+            <div class="flex gap-4 items-center">
+                <img class="w-20" src="/img/add/watch-big.png" alt="" />
+                <div class="grid gap-1">
+                    <Title as="h4">Joker </Title>
+                    <span>Ристмоны</span>
+                    <div class="flex gap-2">
+                        <span class="text-medium">Серийный номер:</span> KC-042
+                    </div>
+                </div>
+            </div>
+            <div class="grid gap-2">
+                <Button>Подтвердить</Button>
+                <Button variant="secondary">Отклонить</Button>
+            </div>
+        </div>
+    </SheetContainer>
+</BottomSheet>

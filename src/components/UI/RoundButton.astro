@@ -4,11 +4,13 @@ export interface Props {
     href?: string;
     variant?: "transparentLight" | "transparentDark" | "gray" | "primary";
     class?: string;
+    dataSheetOpen?: string;
 }
 const {
     href,
     class: className = "",
     variant = "transparentLight",
+    dataSheetOpen,
 } = Astro.props;
 
 const variantClasses = {
@@ -24,6 +26,7 @@ const Tag = href ? "a" : "button";
 
 <Tag
     {...href ? { href } : {}}
+    {...dataSheetOpen ? { "data-sheet-open": dataSheetOpen } : {}}
     class={clsx(
         "p-2 rounded-full relative shrink-0 inline-block",
         variantClasses[variant],

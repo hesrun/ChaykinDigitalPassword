@@ -1,6 +1,9 @@
 ---
 import Title from "@components/UI/Title.astro";
 import ScreenLayout from "@layouts/ScreenLayout.astro";
+import AddWatchExist from "@src/components/modals/addWatchExist.astro";
+import AddWatchIdentification from "@src/components/modals/addWatchIdentification.astro";
+import AddWatchKidnap from "@src/components/modals/addWatchKidnap.astro";
 ---
 
 <ScreenLayout>
@@ -33,18 +36,32 @@ import ScreenLayout from "@layouts/ScreenLayout.astro";
                     fill="white"></path>
             </svg>
             <Title as="h3" class="text-center"
-                >Chaykin Digital <br /> Password</Title
+                >Связь с архивом <br /> мануфактуры</Title
             >
+            <div
+                class="h-1.5 bg-white/10 rounded-full mt-5 mb-3 overflow-hidden backdrop-blur-2xl"
+            >
+                <div class="h-full bg-white rounded-2xl animate-loader w-1/2">
+                </div>
+            </div>
         </div>
         <span
             class="w-60 absolute bottom-14 font-roboto roboto-flex-custom text-center font-semibold"
-            >Identity. Ownership. Access</span
+            >Ищем ваши часы в базе данных</span
         >
     </div>
-    <script>
-        setTimeout(() => {
-            const nextUrl = "/sign/signin";
-            window.location.href = nextUrl;
-        }, 8000);
-    </script>
 </ScreenLayout>
+<AddWatchIdentification />
+<AddWatchExist />
+<AddWatchKidnap />
+<script>
+    setTimeout(() => {
+        Modal.open("add-watch-ident");
+    }, 2000);
+    setTimeout(() => {
+        Modal.open("add-watch-exist");
+    }, 3000);
+    setTimeout(() => {
+        Modal.open("add-watch-kidnap");
+    }, 4000);
+</script>

@@ -1,0 +1,28 @@
+---
+import Modal from "@src/components/layouts/modal/Modal.astro";
+import ModalHeader from "@src/components/layouts/modal/ModalHeader.astro";
+import ModalFooter from "@src/components/layouts/modal/ModalFooter.astro";
+import ModalBody from "@src/components/layouts/modal/ModalBody.astro";
+import Button from "@src/components/UI/Button.astro";
+import Title from "../UI/Title.astro";
+import { BadgeCheck } from "@lucide/astro";
+---
+
+<Modal id="add-watch-success" closeButton={false}>
+    <ModalHeader class="relative">
+        <Title as="h3">Заявка принята</Title>
+        <BadgeCheck
+            stroke-width={1}
+            class="text-green-500 right-0 absolute top-0"
+        />
+    </ModalHeader>
+    <ModalBody>
+        <p>
+            Данные переданы в архив мануфактуры. Мы проверим соответствие модели
+            и фотографий. Срок верификации — до 5 рабочих дней.
+        </p>
+    </ModalBody>
+    <ModalFooter>
+        <Button variant="secondary" href="/main">Закрыть</Button>
+    </ModalFooter>
+</Modal>

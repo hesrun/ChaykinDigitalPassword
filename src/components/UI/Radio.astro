@@ -1,0 +1,18 @@
+---
+interface Props {
+    id: string;
+    name: string;
+    title: string;
+    description: string;
+}
+const { id, name, title, description } = Astro.props as Props;
+---
+
+<label class="c-radio">
+    <input type="radio" class="c-radio__input" id={id} name={name} />
+    <div class="c-radio__icon"></div>
+    <div class="c-radio__content">
+        <span class="c-radio__title">{title}</span>
+        <span class="c-radio__description">{description}</span>
+    </div>
+</label>

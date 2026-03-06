@@ -1,0 +1,91 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import NavBar from "@components/layouts/NavBar.astro";
+import FooterLayout from "@src/components/layouts/footer/FooterLayout.astro";
+import Button from "@src/components/UI/Button.astro";
+import Header from "@src/components/layouts/header/Header.astro";
+import Title from "@src/components/UI/Title.astro";
+import AddWatchSuccess from "@src/components/modals/addWatchSuccess.astro";
+import { Plus, X } from "@lucide/astro";
+---
+
+<ScreenLayout>
+    <Header title="Подтверждение наличия" backUrl="/add-watch/add-archive" />
+    <ScreenBody hasNavbr>
+        <div class="grid gap-1 mb-6">
+            <Title as="h6"
+                >Пожалуйста, установите на ваших часах время: 10:10</Title
+            >
+            <p>
+                Снимите видео часов с установленным временем. Это подтверждает,
+                что часы находятся у вас прямо сейчас
+            </p>
+        </div>
+        <div class="grid gap-4">
+            <div class="flex gap-4 items-center">
+                <label
+                    class="w-20 h-20 rounded-2xl bg-card flex items-center justify-center relative"
+                >
+                    <Plus stroke-width={1} class="text-neutral-500" />
+                    <input
+                        type="file"
+                        accept="video/*"
+                        class="hidden"
+                        name="video"
+                        id="video"
+                    />
+                </label>
+                <div class="grid gap-1">
+                    <Title as="h6">Видео циферблата</Title>
+                    <span class="text-medium">Обязательно</span>
+                </div>
+            </div>
+            <div class="flex gap-4 items-center">
+                <label
+                    class="w-20 h-20 rounded-2xl bg-card flex items-center justify-center relative"
+                >
+                    <img
+                        class="w-20 h-20 rounded-2xl object-cover"
+                        src="/img/hub/preview-2.jpg"
+                        alt=""
+                    />
+                    <button
+                        class="w-6 h-6 bg-white text-gray-500 shadow rounded-full absolute -top-2 -right-2 flex items-center justify-center active:bg-primary active:text-white"
+                    >
+                        <X stroke-width={1} />
+                    </button>
+                </label>
+                <div class="grid gap-1">
+                    <Title as="h6">Фото задней крышки</Title>
+                    <span class="text-medium">Опционально</span>
+                </div>
+            </div>
+            <div class="flex gap-4 items-center">
+                <label
+                    class="w-20 h-20 rounded-2xl bg-card flex items-center justify-center relative"
+                >
+                    <Plus stroke-width={1} class="text-neutral-500" />
+                    <input
+                        type="file"
+                        accept="image/*"
+                        class="hidden"
+                        name="documents"
+                        id="documents"
+                    />
+                </label>
+                <div class="grid gap-1">
+                    <Title as="h6">Фото документов</Title>
+                    <span class="text-medium">Опционально</span>
+                </div>
+            </div>
+        </div>
+        <FooterLayout>
+            <Button dataModalOpen="add-watch-success">
+                Отправить заявку
+            </Button>
+        </FooterLayout>
+    </ScreenBody>
+</ScreenLayout>
+<NavBar active="settings" />
+<AddWatchSuccess />

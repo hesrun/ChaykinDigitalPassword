@@ -1,0 +1,46 @@
+---
+import Modal from "@src/components/layouts/modal/Modal.astro";
+import ModalHeader from "@src/components/layouts/modal/ModalHeader.astro";
+import Button from "@src/components/UI/Button.astro";
+import Title from "../UI/Title.astro";
+import { BadgeAlert } from "@lucide/astro";
+import ModalFooter from "../layouts/modal/ModalFooter.astro";
+import ModalBody from "../layouts/modal/ModalBody.astro";
+---
+
+<Modal id="add-watch-kidnap">
+    <ModalHeader>
+        <Title as="h3">
+            Данный серийный номер числится в списке утраченных
+        </Title>
+    </ModalHeader>
+    <ModalBody>
+        <div class="grid gap-4">
+            <p>Пожалуйста, свяжитесь с мануфактурой</p>
+            <hr class="border-line" />
+            <div class="flex gap-4 items-center">
+                <img class="w-20" src="/img/add/watch-big.png" alt="" />
+                <div class="grid gap-1">
+                    <Title as="h4">Joker </Title>
+                    <span>Ристмоны</span>
+                    <div class="flex gap-2">
+                        <span class="text-medium">Серийный номер:</span> KC-042
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="text-medium">Статус:</span>
+                        <span class="flex items-center gap-1">
+                            <BadgeAlert
+                                width={18}
+                                height={18}
+                                class="text-red-500 vertical-align-middle"
+                            /> Украден
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ModalBody>
+    <ModalFooter>
+        <Button>Обратиться в поддержку</Button>
+    </ModalFooter>
+</Modal>

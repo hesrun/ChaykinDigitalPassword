@@ -9,6 +9,8 @@ export interface Props {
     disabled?: boolean;
     isLoading?: boolean;
     href?: string;
+    dataSheetOpen?: string;
+    dataModalOpen?: string;
 }
 
 const {
@@ -18,13 +20,18 @@ const {
     isLoading = false,
     variant = "primary",
     size = "large",
-    href = "#",
+    href,
+    dataSheetOpen,
+    dataModalOpen,
 } = Astro.props;
+
 const Tag = href ? "a" : "button";
 ---
 
 <Tag
     href={href ? href : undefined}
+    {...dataSheetOpen ? { "data-sheet-open": dataSheetOpen } : {}}
+    {...dataModalOpen ? { "data-modal-open": dataModalOpen } : {}}
     type={type}
     disabled={disabled}
     class={clsx(

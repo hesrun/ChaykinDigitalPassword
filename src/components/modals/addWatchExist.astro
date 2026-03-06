@@ -1,0 +1,40 @@
+---
+import Modal from "@src/components/layouts/modal/Modal.astro";
+import ModalHeader from "@src/components/layouts/modal/ModalHeader.astro";
+import Button from "@src/components/UI/Button.astro";
+import Title from "../UI/Title.astro";
+import ModalFooter from "../layouts/modal/ModalFooter.astro";
+import ModalBody from "../layouts/modal/ModalBody.astro";
+---
+
+<Modal id="add-watch-exist">
+    <ModalHeader>
+        <Title as="h3">Уже зарегистрированы</Title>
+    </ModalHeader>
+    <ModalBody>
+        <div class="grid gap-4">
+            <p>
+                Данный экземпляр уже привязан к другому владельцу. Если вы
+                приобрели эти часы, запросите передачу прав у продавца или
+                обратитесь в мануфактуру
+            </p>
+            <hr class="border-line" />
+            <div class="flex gap-4 items-center">
+                <img class="w-20" src="/img/add/watch-big.png" alt="" />
+                <div class="grid gap-1">
+                    <Title as="h4">Joker </Title>
+                    <span>Ристмоны</span>
+                    <div class="flex gap-2">
+                        <span class="text-medium">Серийный номер:</span> KC-042
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="text-medium">Статус:</span> Готов к привязке
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ModalBody>
+    <ModalFooter>
+        <Button>Обратиться в поддержку</Button>
+    </ModalFooter>
+</Modal>

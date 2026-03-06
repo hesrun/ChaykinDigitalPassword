@@ -5,6 +5,10 @@ import ScreenLayout from "@layouts/ScreenLayout.astro";
 import RoundButton from "@components/UI/RoundButton.astro";
 import { Bell, ChevronRight, Plus } from "@lucide/astro";
 import NavBar from "@components/layouts/NavBar.astro";
+import NotificationListSheet from "@src/components/sheets/notificationListSheet.astro";
+import NotificationTransferRightsSheet from "@src/components/sheets/NotificationTransferRightsSheet.astro";
+import NotificationWatchPulseSheet from "@src/components/sheets/NotificationWatchPulseSheet.astro";
+import NotificationStatusSheet from "@src/components/sheets/NotificationStatusSheet.astro";
 ---
 
 <ScreenLayout>
@@ -29,7 +33,7 @@ import NavBar from "@components/layouts/NavBar.astro";
                     <span class="text-2xl font-semibold font-roboto">KЧ</span>
                 </div>
                 <Title as="h2">Константин Чайкин</Title>
-                <RoundButton>
+                <RoundButton dataSheetOpen="notificationListSheet">
                     <Bell stroke-width="1" />
                     <span
                         class="w-2 h-2 bg-primary rounded-full block absolute top-0.5 right-0.5"
@@ -53,7 +57,7 @@ import NavBar from "@components/layouts/NavBar.astro";
                     </svg>
                     Владелец часов с 2024г
                 </div>
-                <RoundButton>
+                <RoundButton href="/add-watch">
                     <Plus stroke-width="1" />
                 </RoundButton>
             </div>
@@ -99,3 +103,8 @@ import NavBar from "@components/layouts/NavBar.astro";
     </ScreenBody>
 </ScreenLayout>
 <NavBar active="my-watches" />
+
+<NotificationListSheet />
+<NotificationTransferRightsSheet />
+<NotificationWatchPulseSheet />
+<NotificationStatusSheet />

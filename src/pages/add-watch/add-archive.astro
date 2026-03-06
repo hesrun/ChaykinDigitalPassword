@@ -1,0 +1,58 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import NavBar from "@components/layouts/NavBar.astro";
+import FooterLayout from "@src/components/layouts/footer/FooterLayout.astro";
+import Button from "@src/components/UI/Button.astro";
+import Header from "@src/components/layouts/header/Header.astro";
+import Title from "@src/components/UI/Title.astro";
+import Select from "@src/components/UI/Select.astro";
+import Textarea from "@src/components/UI/Textarea.astro";
+import Input from "@src/components/UI/Input.astro";
+---
+
+<ScreenLayout>
+    <Header title="Регистрация архива" backUrl="/add-watch" />
+    <ScreenBody hasNavbr>
+        <p class="text-medium mb-4">
+            Модели ранних выпусков без цифрового кода
+        </p>
+        <div class="grid gap-4">
+            <Title as="h6">Данные о часах</Title>
+            <div class="grid gap-2">
+                <Select
+                    id="model"
+                    name="model"
+                    label="Модель часов"
+                    options={[
+                        { value: "joker", label: "Joker" },
+                        { value: "restimon", label: "Рестимон" },
+                    ]}
+                />
+                <Input
+                    type="text"
+                    placeholder="Серийный номер"
+                    label="Серийный номер"
+                    id="serialNumber"
+                    name="serialNumber"
+                />
+                <span class="text-medium text-xs"
+                    >Оставьте пустым, если номер не найден или отсутствует на
+                    корпусе</span
+                >
+            </div>
+            <Textarea
+                placeholder="Расскажите, когда и где были приобретены часы, есть ли документы"
+                name="comment"
+                id="comment"
+            />
+        </div>
+        <FooterLayout>
+            <Button href="/add-watch/add-approv">
+                Перейти к фото/видео проверке
+            </Button>
+        </FooterLayout>
+    </ScreenBody>
+</ScreenLayout>
+
+<NavBar active="settings" />

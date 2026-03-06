@@ -1,0 +1,44 @@
+---
+import Modal from "@src/components/layouts/modal/Modal.astro";
+import ModalHeader from "@src/components/layouts/modal/ModalHeader.astro";
+import Button from "@src/components/UI/Button.astro";
+import Title from "../UI/Title.astro";
+import ModalBody from "../layouts/modal/ModalBody.astro";
+import ModalFooter from "../layouts/modal/ModalFooter.astro";
+---
+
+<Modal id="add-watch-ident">
+    <ModalHeader>
+        <Title as="h3" class="mb-2">Часы идентифицированы</Title>
+    </ModalHeader>
+    <ModalBody>
+        <div class="grid gap-6 mb-4">
+            <p>Цифровой паспорт найден. Гарантия активирована с 17.01.2025</p>
+            <div>
+                <img
+                    class="mx-auto max-w-45"
+                    src="/img/add/watch-big.png"
+                    alt=""
+                />
+            </div>
+            <div>
+                <Title as="h4">Joker </Title>
+                <span>Ристмоны</span>
+            </div>
+            <div class="flex gap-4">
+                <div class="grid gap-1">
+                    <span class="text-medium text-xs">Серийный номер</span>
+                    KC-042
+                </div>
+                <div class="grid gap-1">
+                    <span class="text-medium text-xs">Статус</span>
+                    Готов к привязке
+                </div>
+            </div>
+        </div>
+    </ModalBody>
+    <ModalFooter>
+        <Button href="/main/">Добавить в "Мои часы"</Button>
+        <Button variant="secondary" href="/add-watch">Отмена</Button>
+    </ModalFooter>
+</Modal>

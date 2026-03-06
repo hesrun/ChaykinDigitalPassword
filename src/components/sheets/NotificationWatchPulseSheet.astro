@@ -1,0 +1,64 @@
+---
+import { Mail, MessagesSquare, PhoneCall } from "@lucide/astro";
+import BottomSheet from "../layouts/bottomSheet/BottomSheet.astro";
+import SheetContainer from "../layouts/bottomSheet/SheetContainer.astro";
+import SheetHeader from "../layouts/bottomSheet/SheetHeader.astro";
+import Button from "../UI/Button.astro";
+import Title from "../UI/Title.astro";
+import Select from "../UI/Select.astro";
+import Textarea from "../UI/Textarea.astro";
+import Input from "../UI/Input.astro";
+---
+
+<BottomSheet id="watchPulseNotificationSheet">
+    <SheetContainer>
+        <SheetHeader>
+            <Title>Рекомендация Watch Pulse </Title>
+        </SheetHeader>
+        <div class="grid gap-4">
+            <p>
+                Механизм ваших Carpe Diem требует плановой диагностики (интервал
+                5 лет).
+            </p>
+            <div class="flex gap-4 items-center">
+                <img class="w-20" src="/img/add/watch-big.png" alt="" />
+                <div class="grid gap-1">
+                    <Title as="h4">Carpe Diem </Title>
+                    <div class="flex gap-2">
+                        <span class="text-medium">Последняя диагностика:</span> 01.01.2021
+                    </div>
+                    <div class="flex gap-2">
+                        <span class="text-medium">Серийный номер:</span> KC-042
+                    </div>
+                </div>
+            </div>
+            <div class="grid gap-2">
+                <Select
+                    id="typeService"
+                    name="typeService"
+                    label="Тип обращения"
+                    options={[
+                        { value: "warranty", label: "Гарантийный ремонт" },
+                        { value: "service", label: "Ремонт" },
+                        { value: "consultation", label: "Консультация" },
+                    ]}
+                />
+                <Input
+                    type="date"
+                    id="date"
+                    name="date"
+                    label="Желаемая дата"
+                    placeholder="Желаемая дата"
+                />
+                <Textarea
+                    placeholder="Текст комментария"
+                    name="comment"
+                    id="comment"
+                />
+            </div>
+            <div class="grid gap-2">
+                <Button>Записаться на сервис</Button>
+            </div>
+        </div>
+    </SheetContainer>
+</BottomSheet>

@@ -1,0 +1,10 @@
+---
+interface Props {
+    class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+
+<div class={`grid gap-2 ${className}`}>
+    <slot />
+</div>

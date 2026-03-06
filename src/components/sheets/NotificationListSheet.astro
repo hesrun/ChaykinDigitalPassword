@@ -1,0 +1,102 @@
+---
+import BottomSheet from "../layouts/bottomSheet/BottomSheet.astro";
+import SheetContainer from "../layouts/bottomSheet/SheetContainer.astro";
+import SheetHeader from "../layouts/bottomSheet/SheetHeader.astro";
+import Title from "../UI/Title.astro";
+import NotificationCard from "../UI/NotificationCard.astro";
+
+const notifications = [
+    {
+        title: "Передача прав собственности",
+        date: "12 Апр 2025 10:00",
+        description:
+            "Иван И. инициировал передачу прав на часы Joker (KC-042). Подтвердите получение.",
+        unread: true,
+        dataSheetOpen: "transferRightsNotification",
+    },
+    {
+        title: "Транзакция завершена",
+        date: "12 Апр 2025 10:00",
+        description:
+            "Часы Lunokhod (KC-008) подтверждены мануфактурой. Цифровой паспорт создан.",
+        dataSheetOpen: "statusNotification",
+    },
+    {
+        title: "Рекомендация Watch Pulse",
+        date: "12 Апр 2025 10:00",
+        description:
+            "Механизм ваших Carpe Diem требует плановой диагностики (интервал 5 лет).",
+        dataSheetOpen: "watchPulseNotificationSheet",
+    },
+    {
+        title: "Готовность к выдаче ",
+        date: "12 Апр 2025 10:00",
+        description:
+            "Репассаж ваших Joker (KC-042) завершен. Ожидаем вас в ателье или согласуйте доставку",
+        dataSheetOpen: "statusNotification",
+    },
+    {
+        title: "Готовность к выдаче ",
+        date: "12 Апр 2025 10:00",
+        description:
+            "Репассаж ваших Joker (KC-042) завершен. Ожидаем вас в ателье или согласуйте доставку",
+    },
+    {
+        title: "Готовность к выдаче ",
+        date: "12 Апр 2025 10:00",
+        description:
+            "Репассаж ваших Joker (KC-042) завершен. Ожидаем вас в ателье или согласуйте доставку",
+    },
+    {
+        title: "Готовность к выдаче ",
+        date: "12 Апр 2025 10:00",
+        description:
+            "Репассаж ваших Joker (KC-042) завершен. Ожидаем вас в ателье или согласуйте доставку",
+    },
+    {
+        title: "Готовность к выдаче ",
+        date: "12 Апр 2025 10:00",
+        description:
+            "Репассаж ваших Joker (KC-042) завершен. Ожидаем вас в ателье или согласуйте доставку",
+    },
+];
+---
+
+<BottomSheet id="notificationListSheet">
+    <SheetContainer>
+        <SheetHeader>
+            <Title>Центр уведомлений</Title>
+        </SheetHeader>
+        <div class="flex gap-2 overflow-auto -mx-4 px-4">
+            <button
+                class="bg-card font-roboto roboto-flex-custom font-semibold py-2 px-2.5 rounded-lg"
+                >Собственность</button
+            >
+            <button
+                class="bg-card font-roboto roboto-flex-custom font-semibold py-2 px-2.5 rounded-lg"
+                >Сервис</button
+            >
+            <button
+                class="bg-card font-roboto roboto-flex-custom font-semibold py-2 px-2.5 rounded-lg"
+                >Access</button
+            >
+            <button
+                class="bg-card font-roboto roboto-flex-custom font-semibold py-2 px-2.5 rounded-lg"
+                >Безопасность</button
+            >
+        </div>
+        <div class="grid gap-2 mt-4 max-h-[calc(100vh-14rem)] overflow-y-auto">
+            {
+                notifications.map((notification) => (
+                    <NotificationCard
+                        title={notification.title}
+                        date={notification.date}
+                        description={notification.description}
+                        unread={notification.unread}
+                        dataSheetOpen={notification.dataSheetOpen}
+                    />
+                ))
+            }
+        </div>
+    </SheetContainer>
+</BottomSheet>

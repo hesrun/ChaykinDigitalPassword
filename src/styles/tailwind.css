@@ -13,6 +13,16 @@
     --color-card: #f5f5f5;
     --shadow-default: 0 0px 40px 0px rgba(0, 0, 0, 0.1);
     --animate-spin: spin 0.5s linear infinite;
+    --animate-loader: loader 1.5s ease-in-out infinite;
+
+    @keyframes loader {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(200%);
+        }
+    }
 }
 
 @utility roboto-flex-custom {
@@ -149,6 +159,40 @@
     }
     .toggle input:checked + .toggle__btn::after {
         @apply translate-x-6;
+    }
+
+    /* c-radio */
+
+    .c-radio {
+        @apply flex items-center gap-4 cursor-pointer;
+    }
+    .c-radio__input {
+        @apply hidden;
+    }
+    .c-radio__icon {
+        @apply w-6 h-6 border border-line rounded-full flex-shrink-0 relative;
+    }
+    .c-radio__icon::after {
+        @apply content-[''] w-3 h-3 bg-primary rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-0 transition-transform duration-200;
+    }
+    .c-radio__input:checked + .c-radio__icon {
+        @apply border-primary;
+    }
+    .c-radio__input:checked + .c-radio__icon::after {
+        @apply scale-100;
+    }
+    .c-radio__content {
+        @apply flex flex-col gap-1;
+    }
+    .c-radio__title {
+        @apply font-medium text-gray-900;
+    }
+    .c-radio__description {
+        @apply text-xs text-gray-500 leading-none;
+    }
+
+    p {
+        @apply leading-normal;
     }
 }
 

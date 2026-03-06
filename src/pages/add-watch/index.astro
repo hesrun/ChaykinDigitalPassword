@@ -1,0 +1,79 @@
+---
+import ScreenBody from "@components/layouts/ScreenBody.astro";
+import ScreenLayout from "@layouts/ScreenLayout.astro";
+import NavBar from "@components/layouts/NavBar.astro";
+import FooterLayout from "@src/components/layouts/footer/FooterLayout.astro";
+import Button from "@src/components/UI/Button.astro";
+import Title from "@src/components/UI/Title.astro";
+import Input from "@src/components/UI/Input.astro";
+import { CircleQuestionMark } from "@lucide/astro";
+import AlertCard from "@src/components/UI/AlertCard.astro";
+---
+
+<ScreenLayout>
+    <ScreenBody hasNavbr>
+        <div class="grid gap-6">
+            <div class="flex justify-between items-center gap-8">
+                <div class="max-w-60">
+                    <Title as="h1">Добавить часы</Title>
+                    <p class="text-medium mt-2 text-xs">
+                        После добавления вам станут доступны специальные
+                        привелегии
+                    </p>
+                </div>
+                <img src="/img/add/watch.png" alt="" />
+            </div>
+            <div class="grid gap-4">
+                <div class="grid gap-2">
+                    <Input
+                        type="text"
+                        placeholder="Серийный номер"
+                        label="Серийный номер"
+                        name="serialNumber"
+                        id="serialNumber"
+                    />
+                    <div class="flex items-center gap-2">
+                        Выгравирован на механизме и корпусе
+                        <CircleQuestionMark
+                            stroke-width={1}
+                            class="text-line"
+                        />
+                    </div>
+                </div>
+                <div class="grid gap-2">
+                    <Input
+                        type="text"
+                        placeholder="Код активации"
+                        label="Код активации"
+                        name="activationCode"
+                        id="activationCode"
+                    />
+                    <div class="flex items-center gap-2">
+                        Указан на гарантийной карте в комплекте
+                        <CircleQuestionMark
+                            stroke-width={1}
+                            class="text-line"
+                        />
+                    </div>
+                </div>
+                <AlertCard
+                    title="Ошибка ввода"
+                    message="Неверный серийный номер или код активации. Пожалуйста, проверьте данные на карте"
+                    type="error"
+                />
+            </div>
+        </div>
+        <FooterLayout>
+            <div class="grid gap-2">
+                <Button href="/add-watch/add-splash">
+                    Проверить и добавить
+                </Button>
+                <Button href="/add-watch/add-archive" variant="secondary">
+                    Нет кода активации?
+                </Button>
+            </div>
+        </FooterLayout>
+    </ScreenBody>
+</ScreenLayout>
+
+<NavBar active="settings" />
